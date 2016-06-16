@@ -31,9 +31,6 @@ import info.androidhive.project.ReturnCode.*;
 import info.androidhive.project.Util.*;
 
 public class MainActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
-
-    private static String TAG = MainActivity.class.getSimpleName();
-
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
 
@@ -60,10 +57,6 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         adapter = new ElementAdapter(this, arrayOfElement);
         //Get data frome server
         new HttpRequestTask().execute();
-
-
-        //Check new feed
-
     }
 
 
@@ -100,36 +93,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         //displayView(position);
     }
 
-    private void displayView(int position) {
-        Fragment fragment = null;
-        String title = getString(R.string.app_name);
-        switch (position) {
-            case 0:
-                fragment = new HomeFragment();
-                title = getString(R.string.title_home);
-                break;
-            case 1:
-                fragment = new FriendsFragment();
-                title = getString(R.string.title_friends);
-                break;
-            case 2:
-                fragment = new MessagesFragment();
-                title = getString(R.string.title_messages);
-                break;
-            default:
-                break;
-        }
 
-        if (fragment != null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_body, fragment);
-            fragmentTransaction.commit();
-
-            // set the toolbar title
-            getSupportActionBar().setTitle(title);
-        }
-    }
 
     //Service gầm gọi đến webservice để lấy dữ liệu,
     // Mỗi lần load 10 phần tử

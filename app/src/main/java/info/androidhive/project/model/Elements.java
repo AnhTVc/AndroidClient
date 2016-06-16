@@ -28,4 +28,10 @@ public class Elements {
         }
         return "[" + temp + "]";
     }
+
+    public void addElement(ArrayList<Element> temps) {
+        for (int i = 0; i < temps.size(); i++) {
+            elements.add(temps.get(i));
+        }
+    }
 }
