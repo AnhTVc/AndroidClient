@@ -90,7 +90,6 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         bt_heart_broken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
         //Excute
