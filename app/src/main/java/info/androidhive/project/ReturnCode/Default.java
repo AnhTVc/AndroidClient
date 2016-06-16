@@ -4,7 +4,7 @@ package info.androidhive.project.ReturnCode;
  * Created by VietAnh on 5/16/2016.
  */
 public class Default {
-    public static final String WSURL = "http://192.168.30.104:3000/";
+    public static final String WSURL = "http://192.168.118.51:3000/";
 
 
     public static final String LOG_TAG = "PROJECT have error: ";

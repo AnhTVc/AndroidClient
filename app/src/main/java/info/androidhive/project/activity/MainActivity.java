@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import info.androidhive.project.R;
 import info.androidhive.project.WebService.Rest;
 
+import info.androidhive.project.adapter.ElementAdapter;
 import info.androidhive.project.model.*;
 import info.androidhive.project.ReturnCode.*;
 import info.androidhive.project.Util.*;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     Rest restAPI = new Rest();
 
     ArrayList<Element> arrayOfElement = new ArrayList<Element>();
-    UsersAdapter adapter = null;
+    ElementAdapter adapter = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
-        adapter = new UsersAdapter(this, arrayOfElement);
+        adapter = new ElementAdapter(this, arrayOfElement);
         //Get data frome server
         new HttpRequestTask().execute();
 
@@ -128,37 +129,6 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             // set the toolbar title
             getSupportActionBar().setTitle(title);
         }
-    }
-
-
-    /****************************************/
-    /*              AnhTVc                  */
-    /****************************************/
-    public class UsersAdapter extends ArrayAdapter<Element> {
-
-        public UsersAdapter(Context context, ArrayList<Element> userTemps) {
-
-            super(context, 0, userTemps);
-
-        }
-
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            // Get the data item for this position
-            Element element = getItem(position);
-            //TODO
-            // Check if an existing view is being reused, otherwise inflate the view
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_element, parent, false);
-            }
-            // Lookup view for data population
-            // Return the completed view to render on screen
-
-            return convertView;
-
-        }
-
     }
 
     //Service gầm gọi đến webservice để lấy dữ liệu,

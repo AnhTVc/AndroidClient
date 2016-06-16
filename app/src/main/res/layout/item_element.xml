@@ -7,14 +7,14 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:id="@+id/title"
+        android:id="@+id/user"
         android:layout_marginLeft="18dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="18dp">
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:id="@+id/image_user"
+            android:id="@+id/user_image"
             android:src="@drawable/john_williams"/>
         <TextView
             android:layout_width="match_parent"
@@ -24,18 +24,19 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:textSize="@dimen/text_size_user_update"
-            android:layout_toEndOf="@+id/image_user"
-            android:layout_toRightOf="@+id/image_user"
+            android:layout_toEndOf="@+id/user_image"
+            android:layout_toRightOf="@+id/user_image"
             android:textColor="@color/user_update"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="4 phut truoc"
+            android:id="@+id/time_create"
             android:layout_marginLeft="17dp"
             android:layout_below="@id/user_name"
-            android:layout_toEndOf="@+id/image_user"
+            android:layout_toEndOf="@+id/user_image"
             android:textSize="@dimen/text_size_time_update"
-            android:layout_toRightOf="@+id/image_user" />
+            android:layout_toRightOf="@+id/user_image" />
     </RelativeLayout>
     <TableLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -46,20 +47,21 @@
 
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/tableRowImage">
 
             <ImageView
                 android:layout_height="150dp"
                 android:src="@drawable/hdclearart"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
-                android:id="@+id/image_left"
+                android:id="@+id/image_post_left"
                 android:layout_weight="1.5"
                 android:layout_width="wrap_content" />
             <ImageView
                 android:layout_height="150dp"
                 android:layout_width="wrap_content"
-                android:id="@+id/image_right"
+                android:id="@+id/image_post_right"
                 android:src="@drawable/hdclearart"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
@@ -71,7 +73,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:id="@+id/content_post"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:textColor="@color/abc_primary_text_disable_only_material_light"
