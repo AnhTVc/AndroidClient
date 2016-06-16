@@ -92,22 +92,22 @@
             android:layout_height="wrap_content"
             android:id="@+id/bt_heart"
             android:layout_marginLeft="200dp"
-            android:src="@drawable/ic_heart"
+            android:src="@drawable/ic_heart_outline_grey600_36dp"
             android:background="@null"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bt_heart"
-            android:layout_marginLeft="260dp"
             android:id="@+id/bt_heart_broken"
             android:src="@drawable/ic_heart_broken"
             android:background="@null"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_toRightOf="@+id/bt_heart"
+            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
+            android:layout_alignBottom="@+id/bt_heart" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
