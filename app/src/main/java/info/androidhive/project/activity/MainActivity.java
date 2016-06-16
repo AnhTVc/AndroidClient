@@ -1,22 +1,14 @@
 package info.androidhive.project.activity;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -93,8 +85,6 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         //displayView(position);
     }
 
-
-
     //Service gầm gọi đến webservice để lấy dữ liệu,
     // Mỗi lần load 10 phần tử
     //
@@ -139,19 +129,15 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
     /*******************************************/
     /*      Endless ListView                   */
-    /******************************************/
+
+    /*******************************************/
     public class EndlessScrollListener implements AbsListView.OnScrollListener {
 
-        private int visibleThreshold = 5;
         private int currentPage = 0;
         private int previousTotal = 0;
         private boolean loading = true;
 
         public EndlessScrollListener() {
-        }
-
-        public EndlessScrollListener(int visibleThreshold) {
-            this.visibleThreshold = visibleThreshold;
         }
 
         @Override
@@ -166,7 +152,6 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                     currentPage++;
                 }
             }
-            //if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
             if (!loading && (visibleItemCount + firstVisibleItem) == totalItemCount ) {
                 // I load the next page of gigs using a background task,
                 // but you can call any function here.
