@@ -1,24 +1,17 @@
 package info.androidhive.project.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 import info.androidhive.project.R;
@@ -28,7 +21,7 @@ import info.androidhive.project.model.Post;
 import info.androidhive.project.model.User;
 
 /**
- * Created by VietAnh on 6/13/2016.
+ * Create by AnhTvc
  */
 public class ElementAdapter extends ArrayAdapter<Element> {
     Element element = null;
@@ -54,7 +47,9 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         TextView time_create = (TextView) convertView.findViewById(R.id.time_create);
         User user = element.getUser();
         ImageView user_image = (ImageView) convertView.findViewById(R.id.user_image);
+
         user_name.setText(user.getNameUser());
+        time_create.setText(element.getPost().getCreatePost());
 
         //new ImageLoadTask(user.getImage().getSrc(), user_image).execute();
         Picasso.with(getContext()).load(user.getImage().getSrc()).into(user_image);
@@ -86,6 +81,18 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         ImageButton bt_heart = (ImageButton) convertView.findViewById(R.id.bt_heart);
         ImageButton bt_heart_broken = (ImageButton) convertView.findViewById(R.id.bt_heart_broken);
         //Tag tag = element.getTag();
+        bt_heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        bt_heart_broken.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         //Excute
         return convertView;
 
