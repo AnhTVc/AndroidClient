@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     android:layout_marginTop="15dp">
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -26,7 +27,7 @@
             android:textSize="@dimen/text_size_user_update"
             android:layout_toEndOf="@+id/user_image"
             android:layout_toRightOf="@+id/user_image"
-            android:textColor="@color/user_update"/>
+            android:textColor="@color/accent_material_light" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -35,6 +36,7 @@
             android:layout_marginLeft="17dp"
             android:layout_below="@id/user_name"
             android:layout_toEndOf="@+id/user_image"
+            android:textColor="@color/user_update"
             android:textSize="@dimen/text_size_time_update"
             android:layout_toRightOf="@+id/user_image" />
     </RelativeLayout>
@@ -76,7 +78,7 @@
         android:id="@+id/content_post"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:textColor="@color/abc_primary_text_disable_only_material_light"
+        android:textColor="@color/abc_primary_text_material_dark"
         android:text="Your Apple ID, tranvietanh.hust@gmail.com, was just used to download Quip - Docs, Chat, Spreadsheets from the Mac App Store on a computer or device that had not previously been associated with that Apple ID...v"
         android:textSize="@dimen/text_size_content"
         />

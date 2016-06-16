@@ -1,14 +1,19 @@
 package info.androidhive.project.activity;
 
+import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -37,6 +42,9 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     ArrayList<Element> arrayOfElement = new ArrayList<Element>();
     ElementAdapter adapter = null;
     ScheduledExecutorService scheduleTaskExecutor = Executors.newScheduledThreadPool(5);
+
+    private SearchView searchView = null;
+    private SearchView.OnQueryTextListener queryTextListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,13 +77,44 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                                                         }
                                                     }, Default.TIME_TO_CALL_SERVICE_NEW_FEED,
                 Default.TIME_TO_CALL_SERVICE_NEW_FEED, TimeUnit.MINUTES);//10 phút
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+            queryTextListener = new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    Log.i("onQueryTextChange", newText);
+
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    Log.i("onQueryTextSubmit", query);
+
+                    return true;
+                }
+            };
+            searchView.setOnQueryTextListener(queryTextListener);
+        }
         return true;
     }
 
@@ -99,18 +138,6 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         super.onResume();  // Always call the superclass method first
 
         // Get the Camera instance as the activity achieves full user focus
-        scheduleTaskExecutor.scheduleWithFixedDelay(new Runnable() {
-                                                        public void run() {
-                                                            Log.i(Default.CHECK_NEW_FEED, "Have check New feed");
-                                                            runOnUiThread(new Runnable() {
-                                                                public void run() {
-                                                                    new HttpNewFeedTask().execute();
-
-                                                                }
-                                                            });
-                                                        }
-                                                    }, Default.TIME_TO_CALL_SERVICE_NEW_FEED,
-                Default.TIME_TO_CALL_SERVICE_NEW_FEED, TimeUnit.MINUTES);//10 phút
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -241,4 +268,5 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             Toast.makeText(this,"New Feed",Toast.LENGTH_SHORT).show();
         }
     }
+
 }
