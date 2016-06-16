@@ -20,9 +20,6 @@ import info.androidhive.project.model.Image;
 import info.androidhive.project.model.Post;
 import info.androidhive.project.model.User;
 
-/**
- * Create by AnhTvc
- */
 public class ElementAdapter extends ArrayAdapter<Element> {
     Element element = null;
 

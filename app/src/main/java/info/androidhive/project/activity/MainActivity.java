@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import info.androidhive.project.R;
 import info.androidhive.project.WebService.Rest;
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
     ArrayList<Element> arrayOfElement = new ArrayList<Element>();
     ElementAdapter adapter = null;
+    ScheduledExecutorService scheduleTaskExecutor = Executors.newScheduledThreadPool(5);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,21 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         adapter = new ElementAdapter(this, arrayOfElement);
         //Get data frome server
         new HttpRequestTask().execute();
+        /*****************************/
+        /*      Check new feed      */
+        /***************************/
+        scheduleTaskExecutor.scheduleWithFixedDelay(new Runnable() {
+                                                        public void run() {
+                                                            Log.i(Default.CHECK_NEW_FEED, "Have check New feed");
+                                                            runOnUiThread(new Runnable() {
+                                                                public void run() {
+                                                                    new HttpNewFeedTask().execute();
+
+                                                                }
+                                                            });
+                                                        }
+                                                    }, Default.TIME_TO_CALL_SERVICE_NEW_FEED,
+                Default.TIME_TO_CALL_SERVICE_NEW_FEED, TimeUnit.MINUTES);//10 phút
     }
 
 
@@ -59,6 +79,39 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         return true;
     }
 
+    @Override
+    protected void onStop(){
+        scheduleTaskExecutor.shutdown();
+        super.onStop();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();  // Always call the superclass method first
+
+        // Release the Camera because we don't need it when paused
+        // and other activities might need to use it.
+        scheduleTaskExecutor.shutdown();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+
+        // Get the Camera instance as the activity achieves full user focus
+        scheduleTaskExecutor.scheduleWithFixedDelay(new Runnable() {
+                                                        public void run() {
+                                                            Log.i(Default.CHECK_NEW_FEED, "Have check New feed");
+                                                            runOnUiThread(new Runnable() {
+                                                                public void run() {
+                                                                    new HttpNewFeedTask().execute();
+
+                                                                }
+                                                            });
+                                                        }
+                                                    }, Default.TIME_TO_CALL_SERVICE_NEW_FEED,
+                Default.TIME_TO_CALL_SERVICE_NEW_FEED, TimeUnit.MINUTES);//10 phút
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -164,5 +217,28 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         public void onScrollStateChanged(AbsListView view, int scrollState) {
         }
 
+    }
+    /************************************************/
+    /*      Call Service thread check new Feed      */
+    /************************************************/
+    private class HttpNewFeedTask extends AsyncTask<Void, Void,String> {
+        @Override
+        protected String doInBackground(Void... params) {
+            /****Hien dang fix la GET  */
+            Log.d("=======>", "CHECK NEW FEED");
+            return restAPI.asyncResponse(Default.WSURL + "element");
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            processValueNew(result);
+        }
+
+    }
+
+    private void processValueNew(String data){
+        if(data != null){
+            Toast.makeText(this,"New Feed",Toast.LENGTH_SHORT).show();
+        }
     }
 }
