@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/id_element"
     android:background="#000000"
     android:layout_marginTop="15dp">
     <RelativeLayout
@@ -87,39 +88,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/bt_heart"
             android:layout_marginLeft="200dp"
-            android:src="@drawable/ic_heart_outline_grey600_36dp"
-            android:background="@null"
+            android:background="@drawable/ic_heart_outline_grey600_36dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="7"
+            android:textColor="@color/user_update" />
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/bt_heart_broken"
-            android:src="@drawable/ic_heart_broken"
-            android:background="@null"
+            android:background="@drawable/ic_heart_broken"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/bt_heart"
             android:layout_marginLeft="34dp"
             android:layout_marginStart="34dp"
-            android:layout_alignBottom="@+id/bt_heart" />
+            android:textColor="@color/user_update"
+            android:layout_alignBottom="@+id/bt_heart"
+            android:text="12" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:layout_height="wrap_content">
-        <Button
+
+        <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="Bach Khoa"
-            android:textColor="@color/user_update"
-            />
+            android:id="@+id/tableTag">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="Bach Khoa"
+                android:textColor="@color/user_update" />
+
+        </TableRow>
     </RelativeLayout>
 
 </LinearLayout>

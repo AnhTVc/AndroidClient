@@ -5,8 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -75,8 +76,8 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         post_content.setText(post.getContentPost());
 
         /****************Feedback*******************/
-        ImageButton bt_heart = (ImageButton) convertView.findViewById(R.id.bt_heart);
-        ImageButton bt_heart_broken = (ImageButton) convertView.findViewById(R.id.bt_heart_broken);
+        Button bt_heart = (Button) convertView.findViewById(R.id.bt_heart);
+        Button bt_heart_broken = (Button) convertView.findViewById(R.id.bt_heart_broken);
         //Tag tag = element.getTag();
         bt_heart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,8 +90,36 @@ public class ElementAdapter extends ArrayAdapter<Element> {
             public void onClick(View v) {
             }
         });
+
+        TableRow tableTag = (TableRow) convertView.findViewById(R.id.tableTag);
+        if (element.getTag() != null) {
+            for (int i = 0; i < element.getTag().size(); i++) {
+                tableTag.addView(createTag(element.getTag().get(i).getNameTag()));
+            }
+        }
+
         //Excute
+
+        LinearLayout id_element = (LinearLayout) convertView.findViewById(R.id.id_element);
+        id_element.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         return convertView;
 
+    }
+
+    private Button createTag(String tagName) {
+        Button button = new Button(getContext());
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+
+        button.setLayoutParams(lp);
+        button.setText(tagName);
+        button.setTextColor(getContext().getResources().getColor(R.color.user_update));
+        return button;
     }
 }
