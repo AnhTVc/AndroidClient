@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/john_williams"
+            android:id="@+id/left_image"
+            android:layout_weight="0.38" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/john_williams"
+            android:id="@+id/center_image"
+            android:layout_weight="0.38" />
+
+        <ImageView
+            android:id="@+id/right_images"
+            android:layout_width="128dp"
+            android:layout_height="123dp"
+            android:src="@drawable/john_williams" />
+    </TableRow>
+
+</LinearLayout>

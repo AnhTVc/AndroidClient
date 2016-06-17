@@ -1,6 +1,7 @@
 package info.androidhive.project.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import info.androidhive.project.R;
+import info.androidhive.project.activity.DetailPostActivity;
 import info.androidhive.project.model.Element;
 import info.androidhive.project.model.Image;
 import info.androidhive.project.model.Post;
@@ -104,7 +106,12 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         id_element.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TODO
+                /*
+                Sent element
+                 */
+                Intent intent = new Intent(getContext(), DetailPostActivity.class);
+                getContext().startActivity(intent);
             }
         });
 
