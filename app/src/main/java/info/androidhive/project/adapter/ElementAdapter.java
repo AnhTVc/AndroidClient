@@ -34,7 +34,6 @@ public class ElementAdapter extends ArrayAdapter<Element> {
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
         element = getItem(position);
-        //TODO
 
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
@@ -106,11 +105,13 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         id_element.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                //TODO push object to Intent
+
                 /*
                 Sent element
                  */
                 Intent intent = new Intent(getContext(), DetailPostActivity.class);
+                intent.putExtra("info.androidhive.project.model.Element", element);
                 getContext().startActivity(intent);
             }
         });

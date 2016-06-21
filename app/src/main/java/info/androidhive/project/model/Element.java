@@ -1,11 +1,14 @@
 package info.androidhive.project.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
  * Created by VietAnh on 5/16/2016.
  */
-public class Element {
+public class Element implements Parcelable {
     private User user;
     private Post post;
     private ArrayList<Tag> tags;
@@ -57,4 +60,37 @@ public class Element {
                 "\t\"tags\":[" + temp + "]\n" +
                 "}";
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.user, flags);
+        dest.writeParcelable(this.post, flags);
+        dest.writeTypedList(this.tags);
+    }
+
+    public Element() {
+    }
+
+    protected Element(Parcel in) {
+        this.user = in.readParcelable(User.class.getClassLoader());
+        this.post = in.readParcelable(Post.class.getClassLoader());
+        this.tags = in.createTypedArrayList(Tag.CREATOR);
+    }
+
+    public static final Parcelable.Creator<Element> CREATOR = new Parcelable.Creator<Element>() {
+        @Override
+        public Element createFromParcel(Parcel source) {
+            return new Element(source);
+        }
+
+        @Override
+        public Element[] newArray(int size) {
+            return new Element[size];
+        }
+    };
 }

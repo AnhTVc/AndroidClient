@@ -1,11 +1,14 @@
 package info.androidhive.project.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
  * Created by VietAnh on 5/16/2016.
  */
-public class Post {
+public class Post implements Parcelable {
     private String idPost;
     private String createPost;
     private String countTruePost;
@@ -104,4 +107,46 @@ public class Post {
                 "}";
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.idPost);
+        dest.writeString(this.createPost);
+        dest.writeString(this.countTruePost);
+        dest.writeString(this.countFalsePost);
+        dest.writeTypedList(this.images);
+        dest.writeString(this.contentPost);
+        dest.writeString(this.idUser);
+        dest.writeString(this.idTag);
+    }
+
+    public Post() {
+    }
+
+    protected Post(Parcel in) {
+        this.idPost = in.readString();
+        this.createPost = in.readString();
+        this.countTruePost = in.readString();
+        this.countFalsePost = in.readString();
+        this.images = in.createTypedArrayList(Image.CREATOR);
+        this.contentPost = in.readString();
+        this.idUser = in.readString();
+        this.idTag = in.readString();
+    }
+
+    public static final Parcelable.Creator<Post> CREATOR = new Parcelable.Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel source) {
+            return new Post(source);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
 }
