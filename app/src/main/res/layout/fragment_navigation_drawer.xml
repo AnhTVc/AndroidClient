@@ -2,8 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
-
-
     <RelativeLayout
         android:id="@+id/nav_header_container"
         android:layout_width="match_parent"
@@ -16,10 +14,52 @@
             android:layout_height="70dp"
             android:src="@drawable/ic_profile"
             android:scaleType="fitCenter"
-            android:layout_centerInParent="true" />
+            android:id="@+id/imageView"
 
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center"
+            android:text="Tran Viet Anh"
+            android:textSize="15dp"
+            android:textColor="@color/background"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center"
+            android:text="Xem trang cá nhân"
+            android:textSize="10dp"
+            android:textColor="@color/background"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="5dp"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/nav_header_container"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nhóm" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sự Kiện" />
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/drawerList"

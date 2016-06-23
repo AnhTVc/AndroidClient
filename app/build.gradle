@@ -34,4 +34,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/org.apache.http.legacy.jar')
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'io.github.yavski:fab-speed-dial:1.0.4'
 }

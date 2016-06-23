@@ -79,7 +79,11 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         /****************Feedback*******************/
         Button bt_heart = (Button) convertView.findViewById(R.id.bt_heart);
         Button bt_heart_broken = (Button) convertView.findViewById(R.id.bt_heart_broken);
-        //Tag tag = element.getTag();
+        //Tag tag = element.getTag();]
+
+        bt_heart.setText(element.getPost().getCountTruePost());
+        bt_heart.setText(element.getPost().getCountFalsePost());
+
         bt_heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

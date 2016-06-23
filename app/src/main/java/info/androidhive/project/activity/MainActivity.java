@@ -5,7 +5,9 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
     private SearchView searchView = null;
     private SearchView.OnQueryTextListener queryTextListener;
+
+    android.support.v4.widget.SwipeRefreshLayout swipeRefreshLayout = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
         adapter = new ElementAdapter(this, arrayOfElement);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.container_body);
         //Get data frome server
         new HttpRequestTask().execute();
         /*****************************/
@@ -79,15 +84,8 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 Default.TIME_TO_CALL_SERVICE_NEW_FEED, TimeUnit.MINUTES);//10 phút
 
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-
-
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -203,8 +201,19 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             }
 
             listView.setOnScrollListener(new EndlessScrollListener());
-
+            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    //Refresh content
+                    refreshContent();
+                }
+            });
         }
+    }
+
+    private void refreshContent() {
+        Log.d("Have refresh Content", "");
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     /*******************************************/
