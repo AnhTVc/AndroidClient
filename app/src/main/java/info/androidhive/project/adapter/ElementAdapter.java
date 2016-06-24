@@ -54,6 +54,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         time_create.setText(element.getPost().getCreatePost());
 
         //new ImageLoadTask(user.getImage().getSrc(), user_image).execute();
+        //TODO Ảnh to quá không hiển thị được
         Picasso.with(getContext()).load(user.getImage().getSrc()).into(user_image);
         /****************Post***********************/
 
@@ -131,18 +132,6 @@ public class ElementAdapter extends ArrayAdapter<Element> {
             public void onClick(View v) {
             }
         });
-
-        TableRow tableTag = (TableRow) convertView.findViewById(R.id.tableTag);
-        if (element.getTag() != null) {
-            for (int i = 0; i < element.getTag().size(); i++) {
-                tableTag.addView(createTag(element.getTag().get(i).getNameTag()));
-            }
-        }
-
-        //Excute
-
-
-
         return convertView;
 
     }
