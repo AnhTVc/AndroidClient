@@ -2,6 +2,8 @@ package info.androidhive.project.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -55,24 +58,57 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         /****************Post***********************/
 
         ImageView imageLeft = (ImageView) convertView.findViewById(R.id.image_post_left);
-        ImageView imageRight = (ImageView) convertView.findViewById(R.id.image_post_right);
-        TableRow tableRow = (TableRow) convertView.findViewById(R.id.tableRowImage);
+        ImageView imageRightTop = (ImageView) convertView.findViewById(R.id.image_post_right_top);
+        ImageView imageRightBottom = (ImageView) convertView.findViewById(R.id.image_post_right_bottom);
+        RelativeLayout relativeLayoutImage = (RelativeLayout) convertView.findViewById(R.id.tableRowImage);
         TextView post_content = (TextView) convertView.findViewById(R.id.content_post);
         Post post = element.getPost();
 
         ArrayList<Image> images = post.getImages();
+
+        int widthscreen = Resources.getSystem().getDisplayMetrics().widthPixels;
         if (images.size() == 0) {
             //Khong co image
-            tableRow.setVisibility(View.INVISIBLE);
+            relativeLayoutImage.setVisibility(View.INVISIBLE);
         } else if (images.size() == 1) {
-            //Co 1 image
-            //new ImageLoadTask(images.get(0).getSrc(), imageLeft).execute();
-            tableRow.removeView(imageRight);
-            Picasso.with(getContext()).load(images.get(0).getSrc()).into(imageLeft);
-        } else {
-            Picasso.with(getContext()).load(images.get(0).getSrc()).into(imageLeft);
-            Picasso.with(getContext()).load(images.get(1).getSrc()).into(imageRight);
+            //Remove imageRight
+            relativeLayoutImage.removeView(imageRightTop);
+            relativeLayoutImage.removeView(imageRightBottom);
 
+            //Size image left = full
+            imageLeft.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+            try {
+                Picasso.with(getContext()).load(images.get(0).getSrc()).into(imageLeft);
+            } catch (Exception e) {
+                Log.d("ERROR NÈ: ===========================>", images.get(0).getSrc().toString());
+                e.printStackTrace();
+            }
+        } else if (images.size() == 2) {
+            //Remove imageRightBottom
+            relativeLayoutImage.removeView(imageRightBottom);
+
+            imageRightTop.getLayoutParams().height = imageLeft.getLayoutParams().height;
+            try {
+                Picasso.with(getContext()).load(images.get(0).getSrc()).into(imageLeft);
+                Picasso.with(getContext()).load(images.get(1).getSrc()).into(imageRightTop);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("ERROR NÈ: ===========================>", images.get(0).getSrc().toString());
+                Log.d("ERROR NÈ: ===========================>", images.get(1).getSrc().toString());
+                e.printStackTrace();
+            }
+        } else {
+
+            try {
+                Picasso.with(getContext()).load(images.get(0).getSrc()).into(imageLeft);
+                Picasso.with(getContext()).load(images.get(1).getSrc()).into(imageRightTop);
+                Picasso.with(getContext()).load(images.get(2).getSrc()).into(imageRightBottom);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("ERROR NÈ: ===========================>", images.get(0).getSrc().toString());
+                Log.d("ERROR NÈ: ===========================>", images.get(1).getSrc().toString());
+                e.printStackTrace();
+            }
         }
         post_content.setText(post.getContentPost());
 
@@ -105,20 +141,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
 
         //Excute
 
-        LinearLayout id_element = (LinearLayout) convertView.findViewById(R.id.id_element);
-        id_element.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO push object to Intent
 
-                /*
-                Sent element
-                 */
-                Intent intent = new Intent(getContext(), DetailPostActivity.class);
-                intent.putExtra("info.androidhive.project.model.Element", element);
-                getContext().startActivity(intent);
-            }
-        });
 
         return convertView;
 

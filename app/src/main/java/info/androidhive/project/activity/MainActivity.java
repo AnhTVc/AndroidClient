@@ -3,6 +3,7 @@ package info.androidhive.project.activity;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -171,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         protected String doInBackground(Void... params) {
             /****Hien dang fix la GET  */
             position = position + 1;
+            //return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
             return restAPI.asyncResponse(Default.WSURL + "element");
         }
 
@@ -188,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
             if(listView.getAdapter() == null){
                 elements = GSONUtil.convertJSONToElements(data);
-                for(int i =0; i< elements.getElements().size(); i++){
+                for (int i = 0; i < elements.getElements().size(); i++) {
                     adapter.add(elements.getElements().get(i));
                 }
                 listView.setAdapter(adapter);
@@ -200,6 +203,20 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 }
             }
 
+            listView.setItemsCanFocus(false);
+
+            AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Element element = (Element) parent.getItemAtPosition(position);
+                    Log.i("========================>", element.getPost().getIdPost());
+                    Intent intent = new Intent(getApplicationContext(), DetailPostActivity.class);
+                    intent.putExtra("info.androidhive.project.model.Element", element);
+                    startActivity(intent);
+                }
+            };
+
+            listView.setOnItemClickListener(itemClickListener);
             listView.setOnScrollListener(new EndlessScrollListener());
             swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
@@ -262,6 +279,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         protected String doInBackground(Void... params) {
             /****Hien dang fix la GET  */
             Log.d("=======>", "CHECK NEW FEED");
+            //return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
             return restAPI.asyncResponse(Default.WSURL + "element");
         }
 

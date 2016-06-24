@@ -25,7 +25,7 @@ public class DetailPostActivity extends AppCompatActivity {
     ImageAdapter adapter = null;
     private Toolbar mToolbar;
     ArrayList<ThreeImage> arrayOfElement = new ArrayList<ThreeImage>();
-    ArrayList<ThreeImage> tempAdapter = new ArrayList<>();
+    private ArrayList<ThreeImage> tempAdapter = null;
     Element element = null;
     private SearchView searchView = null;
     private SearchView.OnQueryTextListener queryTextListener;
@@ -35,7 +35,8 @@ public class DetailPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_post);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        tempAdapter = new ArrayList<>();
+        adapter = new ImageAdapter(getApplicationContext(), tempAdapter);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -44,20 +45,20 @@ public class DetailPostActivity extends AppCompatActivity {
         element = b.getParcelable("info.androidhive.project.model.Element");
        // adapter = new ImageAdapter(getApplicationContext(), arrayOfElement);
         ThreeImage threeImage;
-        ArrayList<Image> images;
+        ArrayList<Image> images = null;
         int postion = 0;
 
         //TODO
         if(element != null){
+            //TODO size =0
             if(element.getPost().getImages().size() < 3){
                 threeImage = new ThreeImage();
                 images = new ArrayList<>();
                 for (int j = 0; j < element.getPost().getImages().size() ; j++) {
                     images.add(element.getPost().getImages().get(j));
                 }
-
                 threeImage.setThreeImage(images);
-                tempAdapter.add(threeImage);
+                adapter.add(threeImage);
             }
             else {
                 for (int i = 1; i < (element.getPost().getImages().size() / 3) + 1; i++) {
@@ -68,8 +69,7 @@ public class DetailPostActivity extends AppCompatActivity {
                         images.add(element.getPost().getImages().get(postion));
                         if (j == 3) {
                             threeImage.setThreeImage(images);
-                            tempAdapter.add(threeImage);
-                            images.clear();
+                            adapter.add(threeImage);
                         }
                     }
                 }
@@ -79,14 +79,12 @@ public class DetailPostActivity extends AppCompatActivity {
                     for (int i = postion + 1; i < element.getPost().getImages().size(); i++) {
                         images = new ArrayList<>();
                         images.add(element.getPost().getImages().get(i));
-                        threeImage.setThreeImage(images);
-                        tempAdapter.add(threeImage);
-                        images.clear();
                     }
+                    threeImage.setThreeImage(images);
+                    adapter.add(threeImage);
                 }
-
             }
-
+            //Size = 3
             process();
         }
     }
@@ -141,13 +139,12 @@ public class DetailPostActivity extends AppCompatActivity {
 
         ListView listImageInDetail = (ListView) this.findViewById(R.id.listImageInDetail);
         if (listImageInDetail.getAdapter() == null) {
-            adapter = new ImageAdapter(getApplicationContext(), tempAdapter);
-            listImageInDetail.setAdapter(adapter);
-        } else {
-            for (int i = 0; i < tempAdapter.size(); i++) {
+/*            int size = tempAdapter.size();
+            for(int i = 0; i < size; i++){
                 adapter.add(tempAdapter.get(i));
-                adapter.notifyDataSetChanged();
-            }
+                Log.d("=======================>", "DuoC ROI NE");
+            }*/
+            listImageInDetail.setAdapter(adapter);
         }
 
         //View content
