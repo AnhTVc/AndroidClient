@@ -6,13 +6,11 @@
     android:focusable="false"
     android:focusableInTouchMode="false"
     android:id="@+id/id_element"
-
     android:layout_marginTop="15dp">
-
     <RelativeLayout
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:id="@+id/relativeTag"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="5dp"
@@ -64,7 +62,20 @@
             android:textColor="@color/user_update"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/tag1" />
+            android:layout_below="@+id/tag1"
+            android:id="@+id/button2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xem thêm"
+            android:textColor="@color/user_update"
+            android:textSize="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignTop="@+id/button2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -170,7 +181,7 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="57dp"
         android:id="@+id/user"
         android:layout_marginLeft="18dp"
         android:layout_marginTop="15dp"
