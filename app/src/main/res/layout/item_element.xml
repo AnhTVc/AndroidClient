@@ -6,7 +6,7 @@
     android:focusable="false"
     android:focusableInTouchMode="false"
     android:id="@+id/id_element"
-    android:background="#000000"
+
     android:layout_marginTop="15dp">
 
     <RelativeLayout
@@ -56,6 +56,7 @@
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:layout_height="30dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/mybutton"
             android:text="Đại học bách khoa hà nội"
             android:textSize="12dp"
@@ -122,7 +123,7 @@
         android:id="@+id/content_post"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:textColor="@color/abc_primary_text_material_dark"
+        android:textColor="#7A8E52"
         android:text="Your Apple ID, tranvietanh.hust@gmail.com, was just used to download Quip - Docs, Chat, Spreadsheets from the Mac App Store on a computer or device that had not previously been associated with that Apple ID...v"
         android:textSize="@dimen/text_size_content"
         />
@@ -185,7 +186,7 @@
             android:textSize="14dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:textColor="@color/accent_material_light"
+            android:textColor="#915A12"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/user_image"
             android:layout_toStartOf="@+id/user_image" />
@@ -206,8 +207,8 @@
         <ImageView
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:foregroundGravity="right"
             android:id="@+id/user_image"
             android:src="@drawable/john_williams"
