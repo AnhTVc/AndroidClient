@@ -205,6 +205,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
             listView.setItemsCanFocus(false);
 
+
             AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

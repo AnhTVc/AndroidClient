@@ -3,6 +3,7 @@ package info.androidhive.project.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import info.androidhive.project.R;
 import info.androidhive.project.activity.DetailPostActivity;
@@ -28,16 +31,21 @@ import info.androidhive.project.model.User;
 
 public class ElementAdapter extends ArrayAdapter<Element> {
     Element element = null;
+    final ArrayList<Element> elements = new ArrayList<>();
 
     public ElementAdapter(Context context, ArrayList<Element> userTemps) {
         super(context, 0, userTemps);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        //TODO dang ko co "timeCreate"
         // Get the data item for this position
-        element = getItem(position);
 
+
+        element = getItem(position);
+        elements.add(element);
+        Log.d("======================>", String.valueOf(position));
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_element, parent, false);
@@ -114,36 +122,55 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         post_content.setText(post.getContentPost());
 
         /****************Feedback*******************/
-        Button bt_heart = (Button) convertView.findViewById(R.id.bt_heart);
+        final Button bt_heart = (Button) convertView.findViewById(R.id.bt_heart);
         Button bt_heart_broken = (Button) convertView.findViewById(R.id.bt_heart_broken);
         //Tag tag = element.getTag();]
 
         bt_heart.setText(element.getPost().getCountTruePost());
-        bt_heart.setText(element.getPost().getCountFalsePost());
-
+        bt_heart_broken.setText(element.getPost().getCountFalsePost());
+        bt_heart.setTag(position);
         bt_heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.d("======================>", String.valueOf(elements.get(position).getPost().getIdPost()));
+                //TODO send len server like
+                bt_heart.setText(element.getPost().getCountTruePost() + 1);
             }
         });
         bt_heart_broken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO send len server like dilike
             }
         });
+
+
+        /**************Tag********************************/
+        //TODO hien tai server dang tra ve ko co tag
+        RelativeLayout relativeTag = (RelativeLayout) convertView.findViewById(R.id.relativeTag);
+        Button tag1 = (Button) convertView.findViewById(R.id.bttag1);
+        Button tag2 = (Button) convertView.findViewById(R.id.bttag1);
+        Button tag3 = (Button) convertView.findViewById(R.id.btTag3);
+        if (element.getTag() != null) {
+            int sizeTag = element.getTag().size();
+
+            if (sizeTag == 0) {
+                relativeTag.removeAllViews();
+            } else if (sizeTag == 1) {
+                relativeTag.removeView(tag1);
+                relativeTag.removeView(tag2);
+            } else if (sizeTag == 2) {
+                relativeTag.removeView(tag3);
+            } else if (sizeTag == 3) {
+
+            }
+        } else {
+            relativeTag.removeAllViews();
+        }
+
         return convertView;
 
     }
 
-    private Button createTag(String tagName) {
-        Button button = new Button(getContext());
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
 
-        button.setLayoutParams(lp);
-        button.setText(tagName);
-        button.setTextColor(getContext().getResources().getColor(R.color.user_update));
-        return button;
-    }
 }
