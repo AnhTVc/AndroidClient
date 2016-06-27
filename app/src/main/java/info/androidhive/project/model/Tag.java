@@ -9,15 +9,14 @@ import android.os.Parcelable;
 public class Tag implements Parcelable {
     private String idTag;
 
-    private String nameTag;
+    private String tag;
 
-    public void setNameTag(String nameTag) {
-        this.nameTag = nameTag;
+    public void setNameTag(String tag) {
+        this.tag = tag;
     }
 
-    public String getNameTag() {
-
-        return nameTag;
+    public String getTag() {
+        return tag;
     }
 
     public String getIdTag() {
@@ -31,7 +30,7 @@ public class Tag implements Parcelable {
     public String toString(){
         return "{\n" +
                 "\t\"idTag\": \"" + idTag + "\",\n" +
-                "\t\"nameTag\": \"" + nameTag + "\"\n" +
+                "\t\"tag\": \"" + tag + "\"\n" +
                 "}";
     }
 
@@ -47,7 +46,7 @@ public class Tag implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.idTag);
-        dest.writeString(this.nameTag);
+        dest.writeString(this.tag);
     }
 
     public Tag() {
@@ -55,7 +54,7 @@ public class Tag implements Parcelable {
 
     protected Tag(Parcel in) {
         this.idTag = in.readString();
-        this.nameTag = in.readString();
+        this.tag = in.readString();
     }
 
     public static final Parcelable.Creator<Tag> CREATOR = new Parcelable.Creator<Tag>() {

@@ -81,11 +81,15 @@ public class ElementAdapter extends ArrayAdapter<Element> {
             relativeLayoutImage.setVisibility(View.INVISIBLE);
         } else if (images.size() == 1) {
             //Remove imageRight
-            relativeLayoutImage.removeView(imageRightTop);
-            relativeLayoutImage.removeView(imageRightBottom);
-
+            if (relativeLayoutImage.indexOfChild(imageLeft) == -1) {
+                relativeLayoutImage.addView(imageLeft);
+            }
+            imageRightTop.setVisibility(View.INVISIBLE);
+            imageRightBottom.setVisibility(View.INVISIBLE);
+            imageLeft.setVisibility(View.VISIBLE);
             //Size image left = full
-            imageLeft.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+            imageLeft.getLayoutParams().width = widthscreen;
+            imageLeft.getLayoutParams().height = widthscreen;
             try {
                 Picasso.with(getContext()).load(images.get(0).getSrc()).into(imageLeft);
             } catch (Exception e) {
@@ -93,10 +97,17 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                 e.printStackTrace();
             }
         } else if (images.size() == 2) {
+            imageLeft.setVisibility(View.VISIBLE);
+            imageRightTop.setVisibility(View.VISIBLE);
             //Remove imageRightBottom
-            relativeLayoutImage.removeView(imageRightBottom);
+            imageRightBottom.setVisibility(View.INVISIBLE);
 
-            imageRightTop.getLayoutParams().height = imageLeft.getLayoutParams().height;
+            imageLeft.getLayoutParams().width = widthscreen / 2;
+            imageLeft.getLayoutParams().height = widthscreen / 2;
+            //Moi anh chia doi man hinh
+            imageRightTop.getLayoutParams().width = widthscreen / 2;
+            imageRightTop.getLayoutParams().height = widthscreen / 2;
+
             try {
                 Picasso.with(getContext()).load(images.get(0).getSrc()).into(imageLeft);
                 Picasso.with(getContext()).load(images.get(1).getSrc()).into(imageRightTop);
@@ -107,7 +118,15 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                 e.printStackTrace();
             }
         } else {
-
+            imageLeft.setVisibility(View.VISIBLE);
+            imageRightTop.setVisibility(View.VISIBLE);
+            imageRightBottom.setVisibility(View.VISIBLE);
+            imageRightTop.getLayoutParams().width = widthscreen / 3;
+            imageRightTop.getLayoutParams().height = widthscreen / 3;
+            imageRightBottom.getLayoutParams().width = widthscreen / 3;
+            imageRightBottom.getLayoutParams().height = widthscreen / 3;
+            imageLeft.getLayoutParams().width = 2 * widthscreen / 3;
+            imageLeft.getLayoutParams().height = 2 * widthscreen / 3;
             try {
                 Picasso.with(getContext()).load(images.get(0).getSrc()).into(imageLeft);
                 Picasso.with(getContext()).load(images.get(1).getSrc()).into(imageRightTop);
@@ -149,20 +168,63 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         //TODO hien tai server dang tra ve ko co tag
         RelativeLayout relativeTag = (RelativeLayout) convertView.findViewById(R.id.relativeTag);
         Button tag1 = (Button) convertView.findViewById(R.id.bttag1);
-        Button tag2 = (Button) convertView.findViewById(R.id.bttag1);
+        Button tag2 = (Button) convertView.findViewById(R.id.bttag2);
         Button tag3 = (Button) convertView.findViewById(R.id.btTag3);
+        TextView readmoreTag = (TextView) convertView.findViewById(R.id.readmoreTag);
         if (element.getTag() != null) {
             int sizeTag = element.getTag().size();
 
             if (sizeTag == 0) {
-                relativeTag.removeAllViews();
-            } else if (sizeTag == 1) {
-                relativeTag.removeView(tag1);
-                relativeTag.removeView(tag2);
-            } else if (sizeTag == 2) {
-                relativeTag.removeView(tag3);
-            } else if (sizeTag == 3) {
+                relativeTag.setVisibility(View.INVISIBLE);
 
+            } else if (sizeTag == 1) {
+                tag2.setVisibility(View.INVISIBLE);
+                tag3.setVisibility(View.INVISIBLE);
+                tag1.setVisibility(View.VISIBLE);
+                readmoreTag.setVisibility(View.INVISIBLE);
+                try {
+                    tag1.setText(element.getTag().get(0).getTag());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            } else if (sizeTag == 2) {
+                tag3.setVisibility(View.INVISIBLE);
+                tag1.setVisibility(View.VISIBLE);
+                tag2.setVisibility(View.VISIBLE);
+                readmoreTag.setVisibility(View.INVISIBLE);
+                try {
+                    tag1.setText(element.getTag().get(0).getTag());
+                    tag2.setText(element.getTag().get(1).getTag());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (sizeTag == 3) {
+                tag1.setVisibility(View.VISIBLE);
+                tag2.setVisibility(View.VISIBLE);
+                tag3.setVisibility(View.VISIBLE);
+                readmoreTag.setVisibility(View.INVISIBLE);
+                try {
+
+                    tag1.setText(element.getTag().get(0).getTag());
+                    tag2.setText(element.getTag().get(1).getTag());
+                    tag3.setText(element.getTag().get(2).getTag());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                tag1.setVisibility(View.VISIBLE);
+                tag2.setVisibility(View.VISIBLE);
+                tag3.setVisibility(View.VISIBLE);
+                readmoreTag.setVisibility(View.VISIBLE);
+                try {
+
+                    tag1.setText(element.getTag().get(0).getTag());
+                    tag2.setText(element.getTag().get(1).getTag());
+                    tag3.setText(element.getTag().get(2).getTag());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         } else {
             relativeTag.removeAllViews();

@@ -43,19 +43,33 @@ public class ImageAdapter extends ArrayAdapter<ThreeImage> {
             tableRowImage.removeAllViews();
         } else if (size == 1) {
             //Có mỗi 1 ảnh
-            Picasso.with(getContext()).load(threeImage.getThreeImage().get(0).getSrc()).into(cent_image);
             tableRowImage.removeView(left_image);
             tableRowImage.removeView(right_image);
+            try {
+                Picasso.with(getContext()).load(threeImage.getThreeImage().get(0).getSrc()).into(cent_image);
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
         } else if (size == 2) {
             //Có 2 ảnh
-            Picasso.with(getContext()).load(threeImage.getThreeImage().get(0).getSrc()).into(left_image);
-            Picasso.with(getContext()).load(threeImage.getThreeImage().get(1).getSrc()).into(cent_image);
+
             tableRowImage.removeView(right_image);
+            try {
+                Picasso.with(getContext()).load(threeImage.getThreeImage().get(0).getSrc()).into(left_image);
+                Picasso.with(getContext()).load(threeImage.getThreeImage().get(1).getSrc()).into(cent_image);
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
         } else {
             //Có 3 ánh
-            Picasso.with(getContext()).load(threeImage.getThreeImage().get(0).getSrc()).into(left_image);
-            Picasso.with(getContext()).load(threeImage.getThreeImage().get(1).getSrc()).into(cent_image);
-            Picasso.with(getContext()).load(threeImage.getThreeImage().get(2).getSrc()).into(right_image);
+            try {
+                Picasso.with(getContext()).load(threeImage.getThreeImage().get(0).getSrc()).into(left_image);
+                Picasso.with(getContext()).load(threeImage.getThreeImage().get(1).getSrc()).into(cent_image);
+                Picasso.with(getContext()).load(threeImage.getThreeImage().get(2).getSrc()).into(right_image);
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+
         }
         return convertView;
     }
