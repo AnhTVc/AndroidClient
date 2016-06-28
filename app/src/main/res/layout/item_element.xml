@@ -130,7 +130,7 @@
             android:id="@+id/image_post_right_bottom"
             android:layout_toRightOf="@+id/image_post_left"
             android:layout_toEndOf="@+id/image_post_left"
-            android:layout_below="@+id/image_post_right_top" />
+            android:layout_below="@+id/image_post_right_top" />c2wsaz
     </RelativeLayout>
     <TextView
         android:focusable="false"
