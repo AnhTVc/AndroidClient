@@ -3,6 +3,7 @@ package info.androidhive.project.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,8 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import info.androidhive.project.R;
+import info.androidhive.project.ReturnCode.Default;
+import info.androidhive.project.WebService.Rest;
 import info.androidhive.project.activity.DetailPostActivity;
 import info.androidhive.project.model.Element;
 import info.androidhive.project.model.Image;
@@ -33,6 +36,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
     Element element = null;
     final ArrayList<Element> elements = new ArrayList<>();
 
+    Rest restAPI = new Rest();
     public ElementAdapter(Context context, ArrayList<Element> userTemps) {
         super(context, 0, userTemps);
     }
@@ -140,30 +144,6 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         }
         post_content.setText(post.getContentPost());
 
-        /****************Feedback*******************/
-        final Button bt_heart = (Button) convertView.findViewById(R.id.bt_heart);
-        Button bt_heart_broken = (Button) convertView.findViewById(R.id.bt_heart_broken);
-        //Tag tag = element.getTag();]
-
-        bt_heart.setText(element.getPost().getCountTruePost());
-        bt_heart_broken.setText(element.getPost().getCountFalsePost());
-        bt_heart.setTag(position);
-        bt_heart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("======================>", String.valueOf(elements.get(position).getPost().getIdPost()));
-                //TODO send len server like
-                bt_heart.setText(element.getPost().getCountTruePost() + 1);
-            }
-        });
-        bt_heart_broken.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO send len server like dilike
-            }
-        });
-
-
         /**************Tag********************************/
         //TODO hien tai server dang tra ve ko co tag
         RelativeLayout relativeTag = (RelativeLayout) convertView.findViewById(R.id.relativeTag);
@@ -230,9 +210,60 @@ public class ElementAdapter extends ArrayAdapter<Element> {
             relativeTag.removeAllViews();
         }
 
+        /****************Feedback*******************/
+        final Button bt_heart = (Button) convertView.findViewById(R.id.bt_heart);
+        Button bt_heart_broken = (Button) convertView.findViewById(R.id.bt_heart_broken);
+        //Tag tag = element.getTag();]
+
+        bt_heart.setText(element.getPost().getCountTruePost());
+        bt_heart_broken.setText(element.getPost().getCountFalsePost());
+        bt_heart.setTag(position);
+        bt_heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Element temp = elements.get(position);
+                //TODO send len server like User dang nhap vao he thong
+                String urlParameters = "?id_user=" + temp.getUser().getIdUser()
+                        + "&id_post=" + temp.getPost().getIdPost()
+                        + "&type=true";
+                new RetrieveFeedTask().execute(urlParameters);
+                bt_heart.setText(element.getPost().getCountTruePost() + 1);
+            }
+        });
+        bt_heart_broken.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO send len server like dilike
+                Element temp = elements.get(position);
+                //TODO send len server like User dang nhap vao he thong
+                String urlParameters = "?id_user=" + temp.getUser().getIdUser()
+                        + "&id_post=" + temp.getPost().getIdPost()
+                        + "&type=false";
+                new RetrieveFeedTask().execute(urlParameters);
+                bt_heart.setText(element.getPost().getCountTruePost() + 1);
+            }
+        });
         return convertView;
 
     }
 
+    class RetrieveFeedTask extends AsyncTask<String, Void, String> {
+
+        private Exception exception;
+
+        protected String doInBackground(String... urls) {
+            try {
+                return restAPI.asyncResponse(Default.WSURL + Default.URL_FEEDBACK + urls[0]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        protected void onPostExecute(String feed) {
+            // TODO: check this.exception
+            // TODO: do something with the feed
+        }
+    }
 
 }

@@ -14,10 +14,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.Map;
+
+import javax.net.ssl.HttpsURLConnection;
 
 /*
 import org.apache.http.HttpEntity;
@@ -39,7 +44,7 @@ public class Rest {
     /*                    Function asyncResponse        */
     /****************************************************/
     /**
-     * GET DATA from url
+     * GET DATA from url: GET
      * @param url
      * @return
      */
@@ -61,7 +66,7 @@ public class Rest {
     /*                    Function receiveResponse       */
     /****************************************************/
     /**
-     * get Response
+     * get Response: POST
      * @param url
      * @param params
      * @return
@@ -173,4 +178,51 @@ public class Rest {
         }
         return null;
     }
+
+    // HTTP POST request
+
+    /**
+     * Send feedback for post
+     *
+     * @param url
+     * @param urlParameters
+     * @throws Exception
+     */
+    public String sendFeedbackPost(String url, String urlParameters) throws Exception {
+
+
+        URL obj = new URL(url);
+        HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+
+        //add reuqest header
+        connection.setRequestMethod("POST");
+        //connection.setRequestProperty("User-Agent", USER_AGENT);
+        connection.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+        // Send post request
+        connection.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+        wr.writeBytes(urlParameters);
+        wr.flush();
+        wr.close();
+
+        int responseCode = connection.getResponseCode();
+        System.out.println("\nSending 'POST' request to URL : " + url);
+        System.out.println("Post parameters : " + urlParameters);
+        System.out.println("Response Code : " + responseCode);
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(connection.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+
+        //print result
+        return response.toString();
+
+    }
+
 }
