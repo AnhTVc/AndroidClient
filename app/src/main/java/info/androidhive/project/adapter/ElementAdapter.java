@@ -27,9 +27,12 @@ import info.androidhive.project.R;
 import info.androidhive.project.ReturnCode.Default;
 import info.androidhive.project.WebService.Rest;
 import info.androidhive.project.activity.DetailPostActivity;
+import info.androidhive.project.activity.MainActivity;
+import info.androidhive.project.activity.TagActivity;
 import info.androidhive.project.model.Element;
 import info.androidhive.project.model.Image;
 import info.androidhive.project.model.Post;
+import info.androidhive.project.model.Tag;
 import info.androidhive.project.model.User;
 
 public class ElementAdapter extends ArrayAdapter<Element> {
@@ -151,12 +154,12 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         Button tag2 = (Button) convertView.findViewById(R.id.bttag2);
         Button tag3 = (Button) convertView.findViewById(R.id.btTag3);
         TextView readmoreTag = (TextView) convertView.findViewById(R.id.readmoreTag);
+        final View finalConvertView = convertView;
         if (element.getTag() != null) {
             int sizeTag = element.getTag().size();
-
+            final Element temp = elements.get(position);
             if (sizeTag == 0) {
                 relativeTag.setVisibility(View.INVISIBLE);
-
             } else if (sizeTag == 1) {
                 tag2.setVisibility(View.INVISIBLE);
                 tag3.setVisibility(View.INVISIBLE);
@@ -167,6 +170,17 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+                tag1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Post data
+                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
+                        myIntent.putExtra("id_user", "1");
+                        myIntent.putExtra("id_tag", temp.getTag().get(0).getIdTag());
+                        finalConvertView.getContext().startActivity(myIntent);
+                    }
+                });
 
             } else if (sizeTag == 2) {
                 tag3.setVisibility(View.INVISIBLE);
@@ -179,6 +193,26 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                tag1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Post data
+                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
+                        myIntent.putExtra("id_user", "1");
+                        myIntent.putExtra("id_tag", temp.getTag().get(0).getIdTag());
+                        finalConvertView.getContext().startActivity(myIntent);
+                    }
+                });
+                tag2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Post data
+                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
+                        myIntent.putExtra("id_user", "1");
+                        myIntent.putExtra("id_tag", temp.getTag().get(1).getIdTag());
+                        finalConvertView.getContext().startActivity(myIntent);
+                    }
+                });
             } else if (sizeTag == 3) {
                 tag1.setVisibility(View.VISIBLE);
                 tag2.setVisibility(View.VISIBLE);
@@ -192,6 +226,36 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                tag1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Post data
+                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
+                        myIntent.putExtra("id_user", "1");
+                        myIntent.putExtra("id_tag", temp.getTag().get(0).getIdTag());
+                        finalConvertView.getContext().startActivity(myIntent);
+                    }
+                });
+                tag2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Post data
+                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
+                        myIntent.putExtra("id_user", "1");
+                        myIntent.putExtra("id_tag", temp.getTag().get(1).getIdTag());
+                        finalConvertView.getContext().startActivity(myIntent);
+                    }
+                });
+                tag3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Post data
+                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
+                        myIntent.putExtra("id_user", "1");
+                        myIntent.putExtra("id_tag", temp.getTag().get(2).getIdTag());
+                        finalConvertView.getContext().startActivity(myIntent);
+                    }
+                });
             } else {
                 tag1.setVisibility(View.VISIBLE);
                 tag2.setVisibility(View.VISIBLE);
@@ -205,6 +269,37 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+                tag1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Post data
+                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
+                        myIntent.putExtra("id_user", "1");
+                        myIntent.putExtra("id_tag", temp.getTag().get(0).getIdTag());
+                        finalConvertView.getContext().startActivity(myIntent);
+                    }
+                });
+                tag2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Post data
+                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
+                        myIntent.putExtra("id_user", "1");
+                        myIntent.putExtra("id_tag", temp.getTag().get(1).getIdTag());
+                        finalConvertView.getContext().startActivity(myIntent);
+                    }
+                });
+                tag3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Post data
+                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
+                        myIntent.putExtra("id_user", "1");
+                        myIntent.putExtra("id_tag", temp.getTag().get(2).getIdTag());
+                        finalConvertView.getContext().startActivity(myIntent);
+                    }
+                });
             }
         } else {
             relativeTag.removeAllViews();
