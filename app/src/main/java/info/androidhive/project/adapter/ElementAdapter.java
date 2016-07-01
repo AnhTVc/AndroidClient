@@ -152,7 +152,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         RelativeLayout relativeTag = (RelativeLayout) convertView.findViewById(R.id.relativeTag);
         Button tag1 = (Button) convertView.findViewById(R.id.bttag1);
         Button tag2 = (Button) convertView.findViewById(R.id.bttag2);
-        Button tag3 = (Button) convertView.findViewById(R.id.btTag3);
+        //Button tag3 = (Button) convertView.findViewById(R.id.btTag3);
         TextView readmoreTag = (TextView) convertView.findViewById(R.id.readmoreTag);
         final View finalConvertView = convertView;
         if (element.getTag() != null) {
@@ -162,7 +162,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                 relativeTag.setVisibility(View.INVISIBLE);
             } else if (sizeTag == 1) {
                 tag2.setVisibility(View.INVISIBLE);
-                tag3.setVisibility(View.INVISIBLE);
+                //tag3.setVisibility(View.INVISIBLE);
                 tag1.setVisibility(View.VISIBLE);
                 readmoreTag.setVisibility(View.INVISIBLE);
                 try {
@@ -183,7 +183,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                 });
 
             } else if (sizeTag == 2) {
-                tag3.setVisibility(View.INVISIBLE);
+                //tag3.setVisibility(View.INVISIBLE);
                 tag1.setVisibility(View.VISIBLE);
                 tag2.setVisibility(View.VISIBLE);
                 readmoreTag.setVisibility(View.INVISIBLE);
@@ -213,7 +213,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                         finalConvertView.getContext().startActivity(myIntent);
                     }
                 });
-            } else if (sizeTag == 3) {
+            } /*else *//*if (sizeTag == 3) {
                 tag1.setVisibility(View.VISIBLE);
                 tag2.setVisibility(View.VISIBLE);
                 tag3.setVisibility(View.VISIBLE);
@@ -256,16 +256,16 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                         finalConvertView.getContext().startActivity(myIntent);
                     }
                 });
-            } else {
+            }*/ else {
                 tag1.setVisibility(View.VISIBLE);
                 tag2.setVisibility(View.VISIBLE);
-                tag3.setVisibility(View.VISIBLE);
+                //tag3.setVisibility(View.VISIBLE);
                 readmoreTag.setVisibility(View.VISIBLE);
                 try {
 
                     tag1.setText(element.getTag().get(0).getTag());
                     tag2.setText(element.getTag().get(1).getTag());
-                    tag3.setText(element.getTag().get(2).getTag());
+                    //tag3.setText(element.getTag().get(2).getTag());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -290,7 +290,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                         finalConvertView.getContext().startActivity(myIntent);
                     }
                 });
-                tag3.setOnClickListener(new View.OnClickListener() {
+                /*tag3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         //Post data
@@ -299,7 +299,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                         myIntent.putExtra("id_tag", temp.getTag().get(2).getIdTag());
                         finalConvertView.getContext().startActivity(myIntent);
                     }
-                });
+                });*/
             }
         } else {
             relativeTag.removeAllViews();

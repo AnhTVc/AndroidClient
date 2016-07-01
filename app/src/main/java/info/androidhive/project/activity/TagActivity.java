@@ -86,8 +86,8 @@ public class TagActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
             /****Hien dang fix la GET  */
             position = position + 1;
-            //return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
-            return restAPI.asyncResponse(Default.WSURL + "element");
+            return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
+            //return restAPI.asyncResponse(Default.WSURL + "element");
         }
 
         @Override

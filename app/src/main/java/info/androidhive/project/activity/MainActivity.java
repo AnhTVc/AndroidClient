@@ -173,8 +173,8 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         protected String doInBackground(Void... params) {
             /****Hien dang fix la GET  */
             position = position + 1;
-            //return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
-            return restAPI.asyncResponse(Default.WSURL + "element");
+            return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
+            //return restAPI.asyncResponse(Default.WSURL + "element");
         }
 
         @Override
@@ -280,8 +280,8 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         protected String doInBackground(Void... params) {
             /****Hien dang fix la GET  */
             Log.d("=======>", "CHECK NEW FEED");
-            //return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
-            return restAPI.asyncResponse(Default.WSURL + "element");
+            return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
+            //return restAPI.asyncResponse(Default.WSURL + "element");
         }
 
         @Override
