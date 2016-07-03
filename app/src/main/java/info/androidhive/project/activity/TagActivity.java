@@ -86,8 +86,8 @@ public class TagActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
             /****Hien dang fix la GET  */
             position = position + 1;
-            return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
-            //return restAPI.asyncResponse(Default.WSURL + "element");
+            //return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
+            return restAPI.asyncResponse(Default.WSURL + "element");
         }
 
         @Override
@@ -122,7 +122,7 @@ public class TagActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Element element = (Element) parent.getItemAtPosition(position);
-                    Intent intent = new Intent(getApplicationContext(), DetailPostActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), OnPostActivity.class);
                     intent.putExtra("info.androidhive.project.model.Element", element);
                     startActivity(intent);
                 }

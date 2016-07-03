@@ -19,8 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListView" />
-        <activity android:name=".activity.DetailPostActivity" />
-        <activity android:name=".activity.TagActivity"></activity>
+        <activity android:name=".activity.OnPostActivity" />
+        <activity android:name=".activity.TagActivity" />
+        <activity android:name=".activity.DetailPostActivity"></activity>
     </application>
 
 </manifest>

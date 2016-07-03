@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="info.androidhive.project.activity.OnPostActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/container_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+                <info.androidhive.project.activity.ListViewImplement.NestedListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:id="@+id/listviewTag_IN_ON_POST_ACTIVITY" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#7A8E52"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/textviewContent_IN_ON_POST_ACTIVITY" />
+
+                <info.androidhive.project.activity.ListViewImplement.NestedListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dividerHeight="7dp"
+                    android:id="@+id/listviewImage_IN_ON_POST_ACTIVITY"></info.androidhive.project.activity.ListViewImplement.NestedListView>
+
+                <RelativeLayout
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:id="@+id/user"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="25dp">
+
+                    <TextView
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/user_name_IN_ON_POST_ACTIVITY"
+                        android:layout_height="wrap_content"
+                        android:text="AnhTVc"
+                        android:textSize="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textColor="#915A12"
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/user_image_IN_ON_POST_ACTIVITY"
+                        android:layout_toStartOf="@+id/user_image_IN_ON_POST_ACTIVITY" />
+
+                    <TextView
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4 phut truoc"
+                        android:id="@+id/time_create_IN_ON_POST_ACTIVITY"
+                        android:textColor="@color/user_update"
+                        android:textSize="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/user_image_IN_ON_POST_ACTIVITY"
+                        android:layout_toStartOf="@+id/user_image_IN_ON_POST_ACTIVITY" />
+
+                    <ImageView
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:foregroundGravity="right"
+                        android:id="@+id/user_image_IN_ON_POST_ACTIVITY"
+                        android:src="@drawable/john_williams"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:foregroundGravity="bottom"
+        android:gravity="bottom|center">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="#E8E5CC">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/thumb_up"
+                    android:src="@drawable/ic_heart"
+                    android:foregroundGravity="center" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/thumb_down"
+                    android:src="@drawable/ic_heart_broken"
+                    android:foregroundGravity="center" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_toc_black_24dp"
+                    android:id="@+id/toc"
+                    android:foregroundGravity="center" />
+            </RelativeLayout>
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

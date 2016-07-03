@@ -138,7 +138,8 @@
                 android:layout_height="wrap_content"
                 android:text="Mô tả"
                 android:background="#F9F9F4"
-                android:textColor="#6F7C24"
+                android:textColor="#544E12"
+                android:textStyle="italic"
                 android:paddingLeft="30dp"
                 android:textSize="16dp"
                 android:layout_weight="1.5"
@@ -152,7 +153,7 @@
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="#7A8E52"
+                android:textColor="#6C8E36"
                 android:text="Cân nặng ít nhất là 42kg đối với phụ nữ, 45kg đối với nam giới. Lượng máu hiến mỗi lần không quá 9ml/kg cân nặng và không quá 500ml mỗi lần." />
 
             <RelativeLayout
@@ -176,8 +177,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginLeft="169dp"
-                    android:layout_marginStart="169dp" />
+                    android:layout_marginLeft="250dp"
+                    android:layout_marginStart="250dp" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -185,7 +186,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/listView_IN_TAGACTIVITY"></info.androidhive.project.activity.ListViewImplement.NestedListView>
-
-
     </LinearLayout>
 </ScrollView>
