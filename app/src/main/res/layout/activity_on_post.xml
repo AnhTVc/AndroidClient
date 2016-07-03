@@ -85,10 +85,10 @@
                         android:text="4 phut truoc"
                         android:id="@+id/time_create_IN_ON_POST_ACTIVITY"
                         android:textColor="@color/user_update"
-                        android:textSize="12dp"
+                        android:textSize="10dp"
                         android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@+id/user_image_IN_ON_POST_ACTIVITY"
-                        android:layout_toStartOf="@+id/user_image_IN_ON_POST_ACTIVITY" />
+                        android:layout_alignRight="@+id/user_name_IN_ON_POST_ACTIVITY"
+                        android:layout_alignEnd="@+id/user_name_IN_ON_POST_ACTIVITY" />
 
                     <ImageView
                         android:focusable="false"

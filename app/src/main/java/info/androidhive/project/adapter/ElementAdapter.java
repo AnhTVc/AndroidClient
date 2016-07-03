@@ -213,53 +213,9 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                         finalConvertView.getContext().startActivity(myIntent);
                     }
                 });
-            } /*else *//*if (sizeTag == 3) {
+            } else {
                 tag1.setVisibility(View.VISIBLE);
                 tag2.setVisibility(View.VISIBLE);
-                tag3.setVisibility(View.VISIBLE);
-                readmoreTag.setVisibility(View.INVISIBLE);
-                try {
-
-                    tag1.setText(element.getTag().get(0).getTag());
-                    tag2.setText(element.getTag().get(1).getTag());
-                    tag3.setText(element.getTag().get(2).getTag());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                tag1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Post data
-                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
-                        myIntent.putExtra("id_user", "1");
-                        myIntent.putExtra("id_tag", temp.getTag().get(0).getIdTag());
-                        finalConvertView.getContext().startActivity(myIntent);
-                    }
-                });
-                tag2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Post data
-                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
-                        myIntent.putExtra("id_user", "1");
-                        myIntent.putExtra("id_tag", temp.getTag().get(1).getIdTag());
-                        finalConvertView.getContext().startActivity(myIntent);
-                    }
-                });
-                tag3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Post data
-                        Intent myIntent = new Intent(finalConvertView.getContext(), TagActivity.class);
-                        myIntent.putExtra("id_user", "1");
-                        myIntent.putExtra("id_tag", temp.getTag().get(2).getIdTag());
-                        finalConvertView.getContext().startActivity(myIntent);
-                    }
-                });
-            }*/ else {
-                tag1.setVisibility(View.VISIBLE);
-                tag2.setVisibility(View.VISIBLE);
-                //tag3.setVisibility(View.VISIBLE);
                 readmoreTag.setVisibility(View.VISIBLE);
                 try {
 
@@ -322,7 +278,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                         + "&id_post=" + temp.getPost().getIdPost()
                         + "&type=true";
                 new RetrieveFeedTask().execute(urlParameters);
-                bt_heart.setText(element.getPost().getCountTruePost() + 1);
+                bt_heart.setText(Integer.parseInt(element.getPost().getCountTruePost()) + 1);
             }
         });
         bt_heart_broken.setOnClickListener(new View.OnClickListener() {
@@ -335,7 +291,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
                         + "&id_post=" + temp.getPost().getIdPost()
                         + "&type=false";
                 new RetrieveFeedTask().execute(urlParameters);
-                bt_heart.setText(element.getPost().getCountTruePost() + 1);
+                bt_heart.setText(Integer.parseInt(element.getPost().getCountTruePost()) - 1);
             }
         });
         return convertView;

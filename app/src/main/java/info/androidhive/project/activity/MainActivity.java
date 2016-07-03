@@ -136,9 +136,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
     @Override
     public void onResume() {
-        super.onResume();  // Always call the superclass method first
-
-        // Get the Camera instance as the activity achieves full user focus
+        super.onResume();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
