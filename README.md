@@ -14,4 +14,4 @@ push notification: google cloud message
 lưu log: log4j, http://o7planning.org/web/fe/default/vi/document/10119/huong-dan-su-dung-commons-logging
 
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
+![Alt text](https://support.files.wordpress.com/2009/07/pigeony.jpg?w=688 "Title")
