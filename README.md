@@ -8,8 +8,10 @@ refress: https://www.bignerdranch.com/blog/implementing-swipe-to-refresh/
 # Ý tưởng
 ứng dụng hướng người dùng.
 Ví dụ người dùng có thể tạo phiếu khảo sát về một lĩnh vực cho một nhóm đối tượng cụ thể
+Ví dụ: người dùng chỉ cần đến với tag: Khi còn trẻ. Có thể xem tất cả các trải nghiệm chia sẻ của các bạn trẻ
 # Tiện ích
 push notification: google cloud message
 lưu log: log4j, http://o7planning.org/web/fe/default/vi/document/10119/huong-dan-su-dung-commons-logging
 
 
+![Alt text](https://support.files.wordpress.com/2009/07/pigeony.jpg?w=688 "Title")
