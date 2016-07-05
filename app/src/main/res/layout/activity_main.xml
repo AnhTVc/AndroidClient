@@ -20,17 +20,11 @@
                 layout="@layout/toolbar" />
         </LinearLayout>
 
-        <android.support.v4.widget.SwipeRefreshLayout
+        <FrameLayout
             android:id="@+id/container_body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ListView
-                android:dividerHeight="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/listView" >
-            </ListView>
-        </android.support.v4.widget.SwipeRefreshLayout>
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
     </LinearLayout>
     <fragment
         android:id="@+id/fragment_navigation_drawer"

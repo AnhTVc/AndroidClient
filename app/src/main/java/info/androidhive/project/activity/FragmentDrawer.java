@@ -12,11 +12,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,30 +66,42 @@ public class FragmentDrawer extends Fragment {
         titles = getActivity().getResources().getStringArray(R.array.nav_drawer_labels);
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflating view layout
-        View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         //recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
 
-        adapter = new NavigationDrawerAdapter(getActivity(), getData());
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//                drawerListener.onDrawerItemSelected(view, position);
-//                mDrawerLayout.closeDrawer(containerView);
-//            }
-//
-//            @Override
-//            public void onLongClick(View view, int position) {
-//
-//            }
-//        }));
+        // adapter = new NavigationDrawerAdapter(getActivity(), getData());
+       /* recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                drawerListener.onDrawerItemSelected(view, position);
+                mDrawerLayout.closeDrawer(containerView);
+            }
 
-        return layout;
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+*/
+
+        ImageView imageViewUser = (ImageView) rootView.findViewById(R.id.imageViewUser);
+
+        imageViewUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerListener.onDrawerItemSelected(v, 0);
+                mDrawerLayout.closeDrawer(containerView);
+                Log.d("=======>", "USER CLICKED");
+            }
+        });
+        return rootView;
     }
 
 
