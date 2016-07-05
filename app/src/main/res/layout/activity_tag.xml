@@ -51,56 +51,59 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:id="@+id/buttonFollow">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:id="@+id/thumb_up"
+                        android:id="@+id/imageFollow"
                         android:src="@drawable/ic_bell_black_24dp"
                         android:foregroundGravity="center" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Đã thích"
+                        android:text="Đã theo dõi"
                         android:gravity="center|center_horizontal"
-                        android:textColor="#7C7234"
+                        android:textColor="#666317"
                         android:textSize="12dp"
                         android:id="@+id/user_follow_TAG_ACTIVITY"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_below="@+id/thumb_up" />
+                        android:layout_below="@+id/imageFollow" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:id="@+id/buttonPost">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:id="@+id/thumb_down"
+                        android:id="@+id/imagePost"
                         android:src="@drawable/ic_bookmark_plus_black_24dp"
-                        android:foregroundGravity="center" />
+                        android:foregroundGravity="center"
+                        />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Đã viết bài"
                         android:gravity="center|center_horizontal"
-                        android:textColor="#7C7234"
+                        android:textColor="#666317"
                         android:textSize="12dp"
                         android:id="@+id/user_post_TAG_ACTIVITY"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_below="@+id/thumb_down" />
+                        android:layout_below="@+id/imagePost" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -122,7 +125,7 @@
                         android:layout_height="match_parent"
                         android:text="Khác"
                         android:gravity="center|center_horizontal"
-                        android:textColor="#7C7234"
+                        android:textColor="#666317"
                         android:layout_alignParentRight="true"
                         android:textSize="12dp"
                         android:layout_alignParentEnd="true"
@@ -171,10 +174,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Mô tả"
-                android:textColor="#544E12"
+                android:textColor="#486804"
                 android:textStyle="italic"
                 android:paddingLeft="20dp"
-                android:textSize="16dp"
+                android:textSize="17dp"
                 android:layout_weight="1.5"
                 android:paddingTop="10dp" />
 
@@ -188,7 +191,7 @@
                 android:lineSpacingExtra="1dp"
                 android:textSize="13dp"
                 android:id="@+id/desc_tag_TAG_ACTIVITY"
-                android:textColor="#505938"
+                android:textColor="#515E35"
                 android:text="Cân nặng ít nhất là 42kg đối với phụ nữ, 45kg đối với nam giới. Lượng máu hiến mỗi lần không quá 9ml/kg cân nặng và không quá 500ml mỗi lần." />
 
             <RelativeLayout
@@ -201,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="D3-201 bách khoa hà nội"
-                    android:textColor="#544E12"
+                    android:textColor="#486804"
                     android:paddingLeft="20dp" />
 
                 <ImageView
