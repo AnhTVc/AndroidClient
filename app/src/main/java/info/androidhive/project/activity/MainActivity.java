@@ -7,39 +7,28 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ListView;
+
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import info.androidhive.project.R;
-import info.androidhive.project.WebService.Rest;
 
-import info.androidhive.project.adapter.ElementAdapter;
-import info.androidhive.project.adapter.OnImageAdapter;
-import info.androidhive.project.model.*;
-import info.androidhive.project.ReturnCode.*;
-import info.androidhive.project.Util.*;
 
-public class MainActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
 
@@ -58,10 +47,14 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        drawerFragment = (FragmentDrawer)
-                getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
-        drawerFragment.setDrawerListener(this);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         displayView(0);
 
@@ -131,15 +124,9 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             Toast.makeText(getApplicationContext(), "Search action is selected!", Toast.LENGTH_SHORT).show();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onDrawerItemSelected(View view, int position) {
-        //TODO something
-        displayView(position);
-    }
 
     private void displayView(int position) {
         Fragment fragment = null;
@@ -170,5 +157,19 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             // set the toolbar title
             getSupportActionBar().setTitle(title);
         }
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.nav_share) {
+            Log.d("=============>", "Clicked");
+        } else if (id == R.id.nav_send) {
+
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

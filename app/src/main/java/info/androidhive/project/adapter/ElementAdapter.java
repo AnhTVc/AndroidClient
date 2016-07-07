@@ -3,8 +3,8 @@ package info.androidhive.project.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Paint;
 import android.os.AsyncTask;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,27 +12,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 import info.androidhive.project.R;
 import info.androidhive.project.ReturnCode.Default;
 import info.androidhive.project.WebService.Rest;
-import info.androidhive.project.activity.DetailPostActivity;
-import info.androidhive.project.activity.MainActivity;
 import info.androidhive.project.activity.TagActivity;
 import info.androidhive.project.model.Element;
 import info.androidhive.project.model.Image;
 import info.androidhive.project.model.Post;
-import info.androidhive.project.model.Tag;
 import info.androidhive.project.model.User;
 
 public class ElementAdapter extends ArrayAdapter<Element> {
@@ -152,6 +145,9 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         RelativeLayout relativeTag = (RelativeLayout) convertView.findViewById(R.id.relativeTag);
         Button tag1 = (Button) convertView.findViewById(R.id.bttag1);
         Button tag2 = (Button) convertView.findViewById(R.id.bttag2);
+
+        tag1.setPaintFlags(tag1.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        tag2.setPaintFlags(tag2.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         //Button tag3 = (Button) convertView.findViewById(R.id.btTag3);
         TextView readmoreTag = (TextView) convertView.findViewById(R.id.readmoreTag);
         final View finalConvertView = convertView;
@@ -267,7 +263,7 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         //Tag tag = element.getTag();]
 
         bt_heart.setText(element.getPost().getCountTruePost());
-        bt_heart_broken.setText(element.getPost().getCountFalsePost());
+        //bt_heart_broken.setText(element.getPost().getCountFalsePost());
         bt_heart.setTag(position);
         bt_heart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -284,21 +280,15 @@ public class ElementAdapter extends ArrayAdapter<Element> {
         bt_heart_broken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO send len server like dilike
                 Element temp = elements.get(position);
-                //TODO send len server like User dang nhap vao he thong
-                String urlParameters = "?id_user=" + temp.getUser().getIdUser()
-                        + "&id_post=" + temp.getPost().getIdPost()
-                        + "&type=false";
-                new RetrieveFeedTask().execute(urlParameters);
-                bt_heart.setText(Integer.parseInt(element.getPost().getCountTruePost()) - 1);
+                //Start comment
             }
         });
         return convertView;
 
     }
 
-    class RetrieveFeedTask extends AsyncTask<String, Void, String> {
+    private class RetrieveFeedTask extends AsyncTask<String, Void, String> {
 
         private Exception exception;
 

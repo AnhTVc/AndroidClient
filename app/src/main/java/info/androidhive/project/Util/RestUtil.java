@@ -1,13 +1,5 @@
 package info.androidhive.project.Util;
 
-/*import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;*/
-
 /**
  * Created by VietAnh on 5/16/2016.
  */

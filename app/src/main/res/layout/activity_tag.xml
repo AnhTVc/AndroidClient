@@ -95,7 +95,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Đã viết bài"
+                        android:text="Đang suy nghĩ"
                         android:gravity="center|center_horizontal"
                         android:textColor="#666317"
                         android:textSize="12dp"
@@ -151,17 +151,7 @@
                 android:textSize="13dp"
                 android:text="1000 Người theo dõi"
                 android:id="@+id/user_follow_count_TAG_ACTIVITY" />
-
-            <TextView
-                android:layout_marginTop="7dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="13dp"
-                android:textColor="#777F62"
-                android:text="1000 Đăng bài lên nhóm"
-                android:id="@+id/user_post_count_TAG_ACTIVITY" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
