@@ -51,4 +51,23 @@ public class GSONUtil
 
         return null;
     }
+
+    /**
+     * Convert JSON to Elements <Danh sach Post hien thi tren trang home></Danh>
+     *
+     * @param json
+     * @return
+     */
+    public static TagPage convertJSONToTagPage(String json) {
+        try {
+            Gson gson1 = new Gson();
+            TagPage user1 = gson1.fromJson(json, TagPage.class);
+
+            return user1;
+        } catch (Exception e) {
+            Log.d(Default.LOG_TAG, e.getMessage());
+        }
+
+        return null;
+    }
 }

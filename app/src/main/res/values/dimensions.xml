@@ -5,5 +5,10 @@
     <dimen name="text_size_content">13dp</dimen>
     <dimen name="text_size_time_update">14dp</dimen>
 
-    <dimen name="text_size_tag">8dp</dimen>
+    <dimen name="text_size_tag">14sp</dimen>
+    <dimen name="text_size_read_more">11sp</dimen>
+    <dimen name="text_size_time_create">9sp</dimen>
+
+    <dimen name="text_size_name_tag_TagActivity">28sp</dimen>
+    <dimen name="text_size_status_TagActivity">12sp</dimen>
 </resources>

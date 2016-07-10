@@ -6,41 +6,40 @@
     android:focusable="false"
     android:focusableInTouchMode="false"
     android:id="@+id/id_element"
-    android:layout_marginTop="15dp">
+    android:layout_marginTop="@dimen/margin_top_element">
     <RelativeLayout
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:layout_width="match_parent"
         android:id="@+id/relativeTag"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/margin_tag_in_element"
         android:layout_height="wrap_content">
 
         <Button
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/height_tag"
             android:background="@null"
-            android:text="Bach Khoa"
-            android:textSize="14dp"
+            android:text="@string/tag_name_default"
+            android:textSize="@dimen/text_size_tag"
             android:id="@+id/bttag1"
             android:textAllCaps="false"
             android:textColor="@color/user_update"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textStyle="italic"
-            android:layout_alignParentTop="true"
-            android:nestedScrollingEnabled="false" />
+            android:layout_alignParentTop="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Xem thêm"
+            android:text="@string/read_more"
             android:textColor="@color/user_update"
             android:id="@+id/readmoreTag"
-            android:textSize="11dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="10dp"
+            android:textSize="@dimen/text_size_read_more"
+            android:layout_marginTop="@dimen/marginTop_read_more_tag"
+            android:layout_marginRight="@dimen/marginRight_read_more_tag"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
@@ -51,15 +50,12 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:background="@null"
-        android:text="Bach Khoa"
-        android:textSize="14dp"
+        android:text="@string/tag_name_default"
+        android:textSize="@dimen/text_size_tag"
         android:textAllCaps="false"
         android:textStyle="italic"
         android:textColor="@color/user_update"
-        android:id="@+id/bttag2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/bttag2" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -122,15 +118,15 @@
         android:id="@+id/content_post"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:textColor="#7A8E52"
-        android:text="Your Apple ID, tranvietanh.hust@gmail.com,"
+        android:textColor="@color/color_text_content_element"
+        android:text="@string/text_content_example"
         android:textSize="@dimen/text_size_content"
         />
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="@dimen/marginTop_feedback_in_element"
+        android:layout_marginBottom="@dimen/marginBottom_feedBack_in_element"
         android:layout_height="wrap_content">
 
         <TableRow
@@ -148,13 +144,11 @@
                 <Button
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="@dimen/height_image_feedback_in_element"
+                    android:layout_height="@dimen/height_image_feedback_in_element"
                     android:id="@+id/bt_heart"
                     android:background="@drawable/ic_heart_outline_grey600_36dp"
                     android:layout_alignParentTop="true"
-                    android:text="7"
-                    android:layout_weight="1"
                     android:textColor="@color/user_update" />
             </RelativeLayout>
 
@@ -169,41 +163,33 @@
                 <Button
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="@dimen/height_image_feedback_in_element"
+                    android:layout_height="@dimen/height_image_feedback_in_element"
                     android:id="@+id/bt_heart_broken"
                     android:background="@drawable/ic_message_outline_grey600_36dp"
                     android:layout_alignParentTop="true"
-                    android:layout_marginLeft="34dp"
-                    android:layout_marginStart="34dp"
                     android:textColor="@color/user_update" />
             </RelativeLayout>
-
         </TableRow>
-
     </TableLayout>
-
-
     <RelativeLayout
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:layout_width="match_parent"
-        android:layout_height="57dp"
+        android:layout_height="wrap_content"
         android:id="@+id/user"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp">
-
+        android:paddingRight="@dimen/paddingRight_user_in_element">
         <TextView
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:layout_width="wrap_content"
             android:id="@+id/user_name"
             android:layout_height="wrap_content"
-            android:text="AnhTVc"
-            android:textSize="14dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:textColor="#915A12"
+            android:text="@string/user_name_example"
+            android:textSize="@dimen/text_size_tag"
+            android:layout_marginTop="@dimen/marginTop_user_name_in_element"
+            android:layout_marginRight="@dimen/marginRight_user_name_in_element"
+            android:textColor="@color/color_text_user_name"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/user_image"
             android:layout_toStartOf="@+id/user_image" />
@@ -213,10 +199,11 @@
             android:focusableInTouchMode="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4 phut truoc"
+            android:text="@string/time_create_example"
             android:id="@+id/time_create"
             android:textColor="@color/user_update"
-            android:textSize="10dp"
+            android:layout_below="@id/user_name"
+            android:textSize="@dimen/text_size_time_create"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/user_name"
             android:layout_alignStart="@+id/user_name" />
@@ -224,8 +211,8 @@
         <ImageView
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/weight_image_user_name"
+            android:layout_height="@dimen/weight_image_user_name"
             android:foregroundGravity="right"
             android:id="@+id/user_image"
             android:src="@drawable/john_williams"

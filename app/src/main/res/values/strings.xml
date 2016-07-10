@@ -22,4 +22,17 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Create by AnhTVc -->
+    <string name="tag_name_default">Default Name</string>
+    <string name="read_more">Xem thêm</string>
+    <string name="text_content_example">Your Apple ID, tranvietanh.hust@gmail.com,</string>
+    <string name="user_name_example">AnhTVc</string>
+    <string name="time_create_example">4 phút trước</string>
+
+    <string name="name_tag_example">Tôi 20</string>
+    <string name="status_followed_TagActivity">Đã theo dõi</string>
+    <string name="status_follow_TagActivity">Chưa theo dõi</string>
+    <string name="status_other_TagActivity">Khác</string>
+
 </resources>

@@ -12,8 +12,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,8 @@ import info.androidhive.project.WebService.Rest;
 import info.androidhive.project.adapter.ElementAdapter;
 import info.androidhive.project.model.Element;
 import info.androidhive.project.model.Elements;
+import info.androidhive.project.model.InfoTag;
+import info.androidhive.project.model.TagPage;
 
 public class TagActivity extends AppCompatActivity {
     private Toolbar mToolbar;
@@ -35,6 +40,15 @@ public class TagActivity extends AppCompatActivity {
     ScrollView mainScroll = null;
     ListView listView = null;
 
+    TextView userFollowStatus = null;
+    TextView countUserFollow = null;
+    TextView contentTag = null;
+    TextView contactTag = null;
+    ImageView viewMoreTag = null;
+    RelativeLayout imageTag = null;
+
+    InfoTag infoTag = null;
+    TagPage tagPage = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +80,16 @@ public class TagActivity extends AppCompatActivity {
          */
         new HttpRequestTask().execute();
 
+        userFollowStatus = (TextView) findViewById(R.id.status_user_follow_TAG_ACTIVITY);
+        countUserFollow = (TextView) findViewById(R.id.user_follow_count_TAG_ACTIVITY);
+        contentTag = (TextView) findViewById(R.id.desc_tag_TAG_ACTIVITY);
+        contactTag = (TextView) findViewById(R.id.contact_TAG_ACTIVITY);
+        imageTag = (RelativeLayout) findViewById(R.id.image_tag_TAG_ACTIVITY);
+        viewMoreTag = (ImageView) findViewById(R.id.view_more_tag);
 
-        /**********Check new feed******/
+        if (infoTag != null) {
+            //Set data
+        }
     }
 
     @Override
@@ -101,11 +123,25 @@ public class TagActivity extends AppCompatActivity {
         if (data != null) {
             // Attach the adapter to a ListView
             if (listView.getAdapter() == null) {
-                elements = GSONUtil.convertJSONToElements(data);
+                tagPage = GSONUtil.convertJSONToTagPage(data);
+                infoTag = tagPage.getInfoTag();
+                elements = tagPage.getElements();
                 for (int i = 0; i < elements.getElements().size(); i++) {
                     adapter.add(elements.getElements().get(i));
                 }
                 listView.setAdapter(adapter);
+
+                //TODO dang thieu thong tin
+                if (infoTag != null) {
+                    contactTag.setText(infoTag.getPlace());
+                    contentTag.setText(infoTag.getDesc());
+                }
+                viewMoreTag.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO hieu thi boxup
+                    }
+                });
             } else {
                 elements = GSONUtil.convertJSONToElements(data);
                 for (int i = 0; i < elements.getElements().size(); i++) {
@@ -127,49 +163,9 @@ public class TagActivity extends AppCompatActivity {
             };
 
             listView.setOnItemClickListener(itemClickListener);
-            listView.setOnScrollListener(new EndlessScrollListener());
-
         }
     }
 
-    private class EndlessScrollListener implements AbsListView.OnScrollListener {
 
-        private int currentPage = 0;
-        private int previousTotal = 0;
-        private boolean loading = true;
-
-        public EndlessScrollListener() {
-        }
-
-        @Override
-        public void onScroll(AbsListView view, int firstVisibleItem,
-                             int visibleItemCount, int totalItemCount) {
-
-
-            if (loading) {
-                if (totalItemCount > previousTotal) {
-                    loading = false;
-                    previousTotal = totalItemCount;
-                    currentPage++;
-                }
-            }
-            if (!loading && (visibleItemCount + firstVisibleItem) == totalItemCount) {
-                // I load the next page of gigs using a background task,
-                // but you can call any function here.
-                // new HttpRequestTask().execute();
-                Log.i("========>", "10 post/lan");
-                Log.i("========> visibleItemCount", String.valueOf(visibleItemCount));
-                Log.i("========> firstVisibleItem", String.valueOf(firstVisibleItem));
-                Log.i("========> totalItemCount", String.valueOf(totalItemCount));
-                //new HttpRequestTask().execute();
-                loading = true;
-            }
-        }
-
-        @Override
-        public void onScrollStateChanged(AbsListView view, int scrollState) {
-        }
-
-    }
 
 }

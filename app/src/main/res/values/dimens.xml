@@ -3,4 +3,26 @@
     <dimen name="activity_horizontal_margin">20dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_drawer_width">260dp</dimen>
+
+
+    <!-- Customs by anhtvc -->
+    <dimen name="fab_padding">5dp</dimen>
+    <dimen name="height_tag">25dp</dimen>
+    <dimen name="margin_to_image_on_listView">5dp</dimen>
+    <dimen name="margin_tag_in_element">5dp</dimen>
+    <dimen name="margin_top_element">15dp</dimen>
+
+    <dimen name="marginTop_read_more_tag">7dp</dimen>
+    <dimen name="marginRight_read_more_tag">10dp</dimen>
+
+    <dimen name="marginTop_feedback_in_element">10dp</dimen>
+    <dimen name="marginBottom_feedBack_in_element">10dp</dimen>
+    <dimen name="height_image_feedback_in_element">35dp</dimen>
+
+    <dimen name="paddingRight_user_in_element">20dp</dimen>
+    <dimen name="marginTop_user_name_in_element">10dp</dimen>
+    <dimen name="marginRight_user_name_in_element">10dp</dimen>
+    <dimen name="weight_image_user_name">40dp</dimen>
+
+    <dimen name="height_image_tag_activity">200dp</dimen>
 </resources>

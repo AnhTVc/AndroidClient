@@ -1,7 +1,7 @@
 <LinearLayout android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="@dimen/margin_to_image_on_listView"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView

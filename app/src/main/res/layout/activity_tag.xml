@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F9F4"
+    android:background="@color/background_tag_activity"
     android:id="@+id/main_scroll"
     tools:context="info.androidhive.project.activity.TagActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,22 +16,20 @@
         <RelativeLayout
             android:id="@+id/image_tag_TAG_ACTIVITY"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/height_image_tag_activity"
             android:background="@drawable/hinh_06"
             android:orientation="vertical">
-
             <include
                 android:id="@+id/toolbar_second"
                 layout="@layout/toolbar_second" />
-
             <TextView
                 android:id="@+id/name_tag_TAG_ACTIVITY"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bách khoa hiến máu"
+                android:text="@string/name_tag_example"
                 android:textColor="@android:color/white"
                 android:gravity="center|center_horizontal"
-                android:textSize="28dp"
+                android:textSize="@dimen/text_size_name_tag_TagActivity"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
@@ -46,14 +43,12 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal"
                     android:id="@+id/buttonFollow">
-
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -61,15 +56,14 @@
                         android:id="@+id/imageFollow"
                         android:src="@drawable/ic_bell_black_24dp"
                         android:foregroundGravity="center" />
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Đã theo dõi"
+                        android:text="@string/status_followed_TagActivity"
                         android:gravity="center|center_horizontal"
-                        android:textColor="#666317"
-                        android:textSize="12dp"
-                        android:id="@+id/user_follow_TAG_ACTIVITY"
+                        android:textColor="@color/status_user_tag_activity"
+                        android:textSize="@dimen/text_size_status_TagActivity"
+                        android:id="@+id/status_user_follow_TAG_ACTIVITY"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
@@ -78,7 +72,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal"
                     android:id="@+id/buttonPost">
@@ -95,10 +89,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Đang suy nghĩ"
+                        android:text="Thêm chức năng"
                         android:gravity="center|center_horizontal"
-                        android:textColor="#666317"
-                        android:textSize="12dp"
+                        android:textColor="@color/status_user_tag_activity"
+                        android:textSize="@dimen/text_size_status_TagActivity"
                         android:id="@+id/user_post_TAG_ACTIVITY"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
@@ -108,7 +102,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -123,11 +117,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Khác"
+                        android:text="@string/status_other_TagActivity"
                         android:gravity="center|center_horizontal"
-                        android:textColor="#666317"
+                        android:textColor="@color/status_user_tag_activity"
                         android:layout_alignParentRight="true"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/text_size_status_TagActivity"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:layout_below="@+id/toc" />
@@ -142,7 +136,6 @@
             android:paddingLeft="30dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:layout_marginTop="2dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
@@ -200,7 +193,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight=".3"
+                    android:id="@+id/view_more_tag"
                     android:src="@drawable/ic_play_arrow_black_24dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
