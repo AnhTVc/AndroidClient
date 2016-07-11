@@ -24,7 +24,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/background_tag_activity">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,15 +51,16 @@
                 <info.androidhive.project.activity.ListViewImplement.NestedListView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:dividerHeight="7dp"
+                    android:dividerHeight="2dp"
                     android:id="@+id/listviewImage_IN_ON_POST_ACTIVITY"></info.androidhive.project.activity.ListViewImplement.NestedListView>
 
 
                 <info.androidhive.project.activity.ListViewImplement.NestedListView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:dividerHeight="7dp"
+                    android:layout_marginTop="0dp"
+                    android:dividerHeight="2dp"
+                    android:layout_marginBottom="60dp"
                     android:id="@+id/listviewComment_IN_ON_POST_ACTIVITY"></info.androidhive.project.activity.ListViewImplement.NestedListView>
 
             </LinearLayout>
@@ -127,8 +129,6 @@
                     android:text="Post"
                     android:foregroundGravity="center" />
             </RelativeLayout>
-
-
         </TableRow>
     </TableLayout>
 </RelativeLayout>

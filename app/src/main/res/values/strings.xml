@@ -17,7 +17,7 @@
     </string-array>
 
     <string name="title_messages">Messages</string>
-    <string name="title_friends">Friends</string>
+    <string name="title_friends">Posts</string>
     <string name="title_home">Home</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

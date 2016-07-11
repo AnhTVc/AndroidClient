@@ -16,4 +16,6 @@ public class Default {
     public static final String NEW_FEED_HAVE_DATA = "NEW_FEED_HAVE_DATA";
     public static final String URL_FEEDBACK = "post/feedback";
     public static final int TIME_TO_CALL_SERVICE_NEW_FEED = 10;
+
+    public static final String URL_IMAGE_NO_NAME = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS-CTEBXuIgM6RfIegppLc12jF1wyw-Ak1MSpbK3bVEOIBs5uM4";
 }

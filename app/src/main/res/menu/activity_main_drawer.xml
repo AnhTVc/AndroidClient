@@ -4,7 +4,7 @@
         <item android:title="">
             <menu>
                 <item
-                    android:id="@+id/nav_share"
+                    android:id="@+id/nav_home"
                     android:icon="@drawable/ic_account_balance_black_24dp"
                     android:name="android:actionMenuTextColor"
                     android:title="Trang chủ"></item>
@@ -13,9 +13,9 @@
                     android:icon="@drawable/ic_account_balance_black_24dp"
                     android:title="Trang cá nhân" />
                 <item
-                    android:id="@+id/nav_send"
+                    android:id="@+id/nav_post"
                     android:icon="@drawable/ic_event_black_24dp"
-                    android:title="Sự kiện" />
+                    android:title="Đăng bài" />
             </menu>
         </item>
     </group>

@@ -57,7 +57,7 @@ public class OnPostActivity extends AppCompatActivity {
     private TextView textviewContent;
     private ListView listViewComment;
 
-    private ArrayList<Comment> comments = null;
+    private ArrayList<Comment> comments = new ArrayList<>();
     private Comments dataComments = null;
     Rest restAPI = null;
 

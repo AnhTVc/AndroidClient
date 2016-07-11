@@ -75,14 +75,12 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public boolean onQueryTextChange(String newText) {
                     Log.i("onQueryTextChange", newText);
-
                     return true;
                 }
 
                 @Override
                 public boolean onQueryTextSubmit(String query) {
                     Log.i("onQueryTextSubmit", query);
-
                     return true;
                 }
             };
@@ -137,7 +135,7 @@ public class MainActivity extends AppCompatActivity
                 title = getString(R.string.title_home);
                 break;
             case 1:
-                fragment = new FriendsFragment();
+                fragment = new PostFragment();
                 title = getString(R.string.title_friends);
                 break;
             case 2:
@@ -163,10 +161,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_share) {
-            Log.d("=============>", "Clicked");
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_home) {
+            displayView(0);
+        } else if (id == R.id.nav_post) {
+            displayView(1);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

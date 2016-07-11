@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import info.androidhive.project.R;
+import info.androidhive.project.ReturnCode.Default;
 import info.androidhive.project.model.Comment;
 
 /**
@@ -46,6 +47,7 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
             Picasso.with(getContext()).load(comment.getUser().getImage().getSrc()).into(userImage);
         } catch (Exception e) {
             e.printStackTrace();
+            Picasso.with(getContext()).load(Default.URL_IMAGE_NO_NAME).into(userImage);
         }
         return convertView;
     }
