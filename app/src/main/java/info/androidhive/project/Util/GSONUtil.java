@@ -93,6 +93,17 @@ public class GSONUtil
         return null;
     }
 
+    public static Comments convertJSONToComments(String json) {
+        try {
+            Gson gson1 = new Gson();
+            Comments info = gson1.fromJson(json, Comments.class);
+            return info;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void main(String[] abc) {
         String abs = "{\"idTag\":\"123456\",\"tag\":\"null\",\"srcImg\":\"null\",\"desc\":\"null\",\"uptime\":\"null\",\"place\":\"null\"}";
         Gson gson = new Gson();

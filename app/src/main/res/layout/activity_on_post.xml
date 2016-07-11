@@ -82,10 +82,23 @@
             android:padding="5dp">
 
             <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight=".7">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageFollow"
+                    android:src="@drawable/ic_camera_enhance_black_24dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2.9"
+                android:layout_weight="2"
                 android:orientation="horizontal">
 
                 <EditText
@@ -103,7 +116,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight=".01"
+                android:layout_weight=".1"
                 android:orientation="horizontal">
 
                 <Button

@@ -2,6 +2,7 @@ package info.androidhive.project.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,8 +15,11 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
+import info.androidhive.project.Dialog.ViewMoreTagFragment;
 import info.androidhive.project.R;
 import info.androidhive.project.ReturnCode.Default;
 import info.androidhive.project.Util.GSONUtil;
@@ -120,24 +124,32 @@ public class TagActivity extends AppCompatActivity {
             // Attach the adapter to a ListView
             if (listView.getAdapter() == null) {
                 tagPage = GSONUtil.convertJSONToTagPage(data);
-                info = tagPage.getInfo();
-                elements = tagPage.getElements();
-                for (int i = 0; i < elements.getElements().size(); i++) {
-                    adapter.add(elements.getElements().get(i));
-                }
-                listView.setAdapter(adapter);
-
-                //TODO dang thieu thong tin
-                if (info != null) {
-                    contactTag.setText(info.getPlace());
-                    contentTag.setText(info.getDesc());
-                }
-                viewMoreTag.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //TODO hieu thi boxup
+                if (tagPage != null) {
+                    info = tagPage.getInfo();
+                    elements = tagPage.getElements();
+                    if (elements != null) {
+                        for (int i = 0; i < elements.getElements().size(); i++) {
+                            adapter.add(elements.getElements().get(i));
+                        }
+                        listView.setAdapter(adapter);
                     }
-                });
+
+                    //TODO đang bị thiếu thông tin
+
+                    if (info != null) {
+                        contactTag.setText(info.getPlace());
+                        contentTag.setText(info.getDesc());
+                    }
+                    viewMoreTag.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            FragmentManager fm = getSupportFragmentManager();
+                            ViewMoreTagFragment viewMoreTagFragment = ViewMoreTagFragment.newInstance(info.getTag());
+                            viewMoreTagFragment.show(fm, "fragment_view_more_tag");
+                        }
+                    });
+                }
+
             } else {
                 elements = GSONUtil.convertJSONToElements(data);
                 for (int i = 0; i < elements.getElements().size(); i++) {
@@ -161,7 +173,6 @@ public class TagActivity extends AppCompatActivity {
             listView.setOnItemClickListener(itemClickListener);
         }
     }
-
 
 
 }

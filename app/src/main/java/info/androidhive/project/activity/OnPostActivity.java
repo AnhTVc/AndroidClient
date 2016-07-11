@@ -34,6 +34,7 @@ import info.androidhive.project.adapter.CommentAdapter;
 import info.androidhive.project.adapter.OnImageAdapter;
 import info.androidhive.project.adapter.TagAdapter;
 import info.androidhive.project.model.Comment;
+import info.androidhive.project.model.Comments;
 import info.androidhive.project.model.Element;
 import info.androidhive.project.model.Image;
 import info.androidhive.project.model.Tag;
@@ -57,6 +58,7 @@ public class OnPostActivity extends AppCompatActivity {
     private ListView listViewComment;
 
     private ArrayList<Comment> comments = null;
+    private Comments dataComments = null;
     Rest restAPI = null;
 
     private Button postCommentButton = null;
@@ -121,13 +123,7 @@ public class OnPostActivity extends AppCompatActivity {
 
         //5.
         //TODO gọi lên server lấy các comment.
-        if (comments != null) {
-            for (int i = 0; i < comments.size(); i++) {
-                commentAdapter.add(comments.get(i));
-            }
-
-            listViewComment.setAdapter(commentAdapter);
-        }
+        new HttpRequestTask().execute();
         //6. user thực hiện comment
 /*        getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);*/
@@ -231,7 +227,7 @@ public class OnPostActivity extends AppCompatActivity {
             /****Hien dang fix la GET  */
             //TODO gọi lên server
             //return restAPI.asyncResponse(Default.WSURL + "?id_user=1&counter=0");
-            return restAPI.asyncResponse(Default.WSURL + "element");
+            return restAPI.asyncResponse(Default.WSURL + "comment");
         }
 
         @Override
@@ -244,6 +240,16 @@ public class OnPostActivity extends AppCompatActivity {
     private void processValue(String data) {
         if (data != null) {
             //TODO có Array list Comment
+            dataComments = GSONUtil.convertJSONToComments(data);
+
+            comments = dataComments.getComments();
+            if (comments != null) {
+                for (int i = 0; i < comments.size(); i++) {
+                    commentAdapter.add(comments.get(i));
+                }
+
+                listViewComment.setAdapter(commentAdapter);
+            }
         }
     }
 

@@ -63,7 +63,10 @@ public class ElementAdapter extends ArrayAdapter<Element> {
 
         //new ImageLoadTask(user.getImage().getSrc(), user_image).execute();
         //TODO Ảnh to quá không hiển thị được
-        Picasso.with(getContext()).load(user.getImage().getSrc()).into(user_image);
+        if (user.getImage().getSrc() != null) {
+            Picasso.with(getContext()).load(user.getImage().getSrc()).into(user_image);
+        }
+
         /****************Post***********************/
 
         ImageView imageLeft = (ImageView) convertView.findViewById(R.id.image_post_left);
