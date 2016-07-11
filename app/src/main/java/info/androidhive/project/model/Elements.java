@@ -20,10 +20,12 @@ public class Elements {
     public String toString(){
         String temp = "";
 
-        for(int i = 0; i< elements.size(); i++){
-            temp += elements.get(i).toString();
-            if(i + 1 < elements.size()){
-                temp += ",";
+        if (elements != null) {
+            for (int i = 0; i < elements.size(); i++) {
+                temp += elements.get(i).toString();
+                if (i + 1 < elements.size()) {
+                    temp += ",";
+                }
             }
         }
         return "[" + temp + "]";

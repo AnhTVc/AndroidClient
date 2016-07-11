@@ -52,6 +52,18 @@ public class GSONUtil
         return null;
     }
 
+    public static Info convertJSONToInfoTag(String json) {
+        try {
+            Gson gson1 = new Gson();
+            Info info = gson1.fromJson(json, Info.class);
+            return info;
+        } catch (Exception e) {
+            Log.d(Default.LOG_TAG, e.getMessage());
+        }
+
+        return null;
+    }
+
     /**
      * Convert JSON to Elements <Danh sach Post hien thi tren trang home></Danh>
      *
@@ -60,14 +72,41 @@ public class GSONUtil
      */
     public static TagPage convertJSONToTagPage(String json) {
         try {
-            Gson gson1 = new Gson();
-            TagPage user1 = gson1.fromJson(json, TagPage.class);
+            int positionElements = ProcessUtil.getPositionSubString(json, "\"elements\"");
+            int positonInfoTag = ProcessUtil.getPositionSubString(json, "\"infoTag\"");
 
-            return user1;
+            String strElements = "{" + json.substring(positionElements, positonInfoTag - 1) + "}";
+            String strInfoTag = "{" + json.substring(positonInfoTag + 11, json.length() - 3);
+
+            TagPage tagPage = new TagPage();
+            Elements elements = convertJSONToElements(strElements);
+
+            Info info = convertJSONToInfoTag(strInfoTag);
+            Log.d("============>", strInfoTag);
+            tagPage.setElements(elements);
+            tagPage.setInfo(info);
+
+            return tagPage;
         } catch (Exception e) {
-            Log.d(Default.LOG_TAG, e.getMessage());
+            e.printStackTrace();
         }
-
         return null;
+    }
+
+    public static void main(String[] abc) {
+        String abs = "{\"idTag\":\"123456\",\"tag\":\"null\",\"srcImg\":\"null\",\"desc\":\"null\",\"uptime\":\"null\",\"place\":\"null\"}";
+        Gson gson = new Gson();
+
+        Info test = new Info();
+        test.setIdTag("123132");
+        test.setTag("123");
+        test.setSrcImg("12");
+        test.setDesc("12");
+        test.setUptime("1231");
+        test.setPlace("131");
+
+        Info info = convertJSONToInfoTag(abs);
+        System.out.print(gson.toJson(test));
+        System.out.print(info.getIdTag());
     }
 }

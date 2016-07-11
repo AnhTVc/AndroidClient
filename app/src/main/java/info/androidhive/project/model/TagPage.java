@@ -5,30 +5,32 @@ package info.androidhive.project.model;
  */
 public class TagPage {
     private Elements elements;
-    private InfoTag infoTag;
+    private Info info;
 
     public void setElements(Elements elements) {
         this.elements = elements;
     }
 
-    public void setInfoTag(InfoTag infoTag) {
-        this.infoTag = infoTag;
+    public void setInfo(Info info) {
+        this.info = info;
     }
 
     public Elements getElements() {
         return elements;
     }
 
-    public InfoTag getInfoTag() {
-        return infoTag;
+    public Info getInfo() {
+        return info;
     }
 
-    public String toString() {
+/*    public String toString() {
         return "{\n" +
                 "\t\"elements\":" + elements.toString() + ",\n" +
-                "\t\"infoTag\":" + infoTag.toString() + ",\n" +
+                "\t\"info\":" + info.toString() +
                 "}";
+    }*/
+
+    public static void main(String[] abc) {
+
     }
-
-
 }

@@ -29,6 +29,8 @@ import info.androidhive.project.WebService.Rest;
 import info.androidhive.project.adapter.ElementAdapter;
 import info.androidhive.project.model.Element;
 import info.androidhive.project.model.Elements;
+import info.androidhive.project.model.Info;
+import info.androidhive.project.model.TagPage;
 
 
 public class HomeFragment extends Fragment {
@@ -108,6 +110,16 @@ public class HomeFragment extends Fragment {
 
             if (listView.getAdapter() == null) {
                 elements = GSONUtil.convertJSONToElements(data);
+                TagPage tagpage = new TagPage();
+                Info info = new Info();
+                info.setIdTag("123456");
+
+                tagpage.setElements(elements);
+                tagpage.setInfo(info);
+
+                Log.d("=========>", tagpage.toString());
+
+
                 for (int i = 0; i < elements.getElements().size(); i++) {
                     adapter.add(elements.getElements().get(i));
                 }
