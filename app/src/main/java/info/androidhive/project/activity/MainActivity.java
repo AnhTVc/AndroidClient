@@ -1,10 +1,7 @@
 package info.androidhive.project.activity;
 
-import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -13,7 +10,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -22,6 +18,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import info.androidhive.project.R;
@@ -30,9 +28,6 @@ import info.androidhive.project.R;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar mToolbar;
-    private FragmentDrawer drawerFragment;
-
-
 
     private SearchView searchView = null;
     private SearchView.OnQueryTextListener queryTextListener;
@@ -58,6 +53,30 @@ public class MainActivity extends AppCompatActivity
 
         displayView(0);
 
+        RelativeLayout titleHome = (RelativeLayout) findViewById(R.id.title_home);
+        RelativeLayout titleProfileUser = (RelativeLayout) findViewById(R.id.title_profile_user);
+        RelativeLayout titlePost = (RelativeLayout) findViewById(R.id.title_post);
+
+        titleHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayView(0);
+            }
+        });
+
+        titleProfileUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayView(2);
+            }
+        });
+
+        titlePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayView(1);
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -170,4 +189,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

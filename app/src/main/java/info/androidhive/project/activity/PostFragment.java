@@ -26,15 +26,6 @@ public class PostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_post_data, container, false);
-
-        RelativeLayout cancelPost = (RelativeLayout) rootView.findViewById(R.id.cancel_post);
-        cancelPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("=======>", "QUAY TRỞ LẠI");
-                onBackPressed();
-            }
-        });
         return rootView;
     }
 

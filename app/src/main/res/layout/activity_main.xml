@@ -24,6 +24,82 @@
                     layout="@layout/toolbar" />
             </LinearLayout>
 
+            <TableLayout
+                android:layout_width="match_parent"
+                android:background="#E5DDC5"
+                android:layout_height="wrap_content">
+
+                <TableRow>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/title_home"
+                        android:background="@drawable/title"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/image1"
+                            android:src="@drawable/ic_home_grey600_18dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/image1"
+                            android:text="Trang chủ"
+                            android:gravity="center"
+                            android:textSize="9dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/title_profile_user"
+                        android:background="@drawable/title"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/id_profile"
+                            android:src="@drawable/ic_account_grey600_18dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/id_profile"
+                            android:text="Trang cá nhân"
+                            android:gravity="center"
+                            android:textSize="9dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/title_post"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/title"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/add_post"
+                            android:src="@drawable/ic_newspaper_grey600_18dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_below="@id/add_post"
+                            android:text="Đăng bài"
+                            android:textSize="9dp" />
+                    </RelativeLayout>
+                </TableRow>
+
+
+            </TableLayout>
             <FrameLayout
                 android:id="@+id/container_body"
                 android:layout_width="fill_parent"
